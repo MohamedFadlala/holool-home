@@ -127,7 +127,7 @@
           return companies.map(function(c){
             return '<span class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
               '<img class="logo-mark-img" src="' + c.img + '" alt="' + c.name + ' logo" loading="lazy">' +
-              '<span class="logo-name">' + c.name + '</span></span>';
+             '</span></span>';
           }).join('');  };
         track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }
       /* =========إضافة مشروع======== */
