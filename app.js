@@ -420,4 +420,13 @@
             heroCard.style.transform = 'rotateY(' + (x * 6) + 'deg) rotateX(' + (y * -6) + 'deg)'; });
           heroCard.addEventListener('mouseleave', function(){
             heroCard.style.transform = '';          });        });      }
+      document.querySelectorAll('.teaser-scroll').forEach(function(row){
+        var isDown = false, startX, scrollStart;
+        row.addEventListener('pointerdown', function(e){
+          isDown = true; row.classList.add('dragging');
+          startX = e.clientX; scrollStart = row.scrollLeft; });
+        window.addEventListener('pointerup', function(){ isDown = false; row.classList.remove('dragging'); });
+        row.addEventListener('pointermove', function(e){
+          if (!isDown) return;
+          row.scrollLeft = scrollStart - (e.clientX - startX); }); });
     })();
