@@ -129,15 +129,15 @@
         { img: 'imgs/logos/BOK-logo.jpg',         name: 'بنك الخرطوم' },
         { img: 'imgs/logos/elgwharacafelogo.jpg',      name: 'كافيه الجوهرة' },
         { img: 'imgs/logos/goldencafelogo.jpg',         name: 'كافيه قولدن' },];
-      var track = document.getElementById('marqueeTrack');
-      if (track) {
+      var tracks = document.querySelectorAll('.marquee-track');
+      if (tracks.length) {
         var buildLogoItems = function(hidden){
           return companies.map(function(c){
             return '<span class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
               '<img class="logo-mark-img" src="' + c.img + '" alt="' + c.name + ' logo" loading="lazy">' +
              '</span></span>';
           }).join('');  };
-        track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }
+        tracks.forEach(function(track){ track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }); }
       /* =========إضافة مشروع======== */
           var projects = [
         { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'اقاشي البهجة',            category: 'مطعم' },
@@ -162,8 +162,26 @@
         { img: 'imgs/projects/supermarketSys.jpg',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' }
         ,        { img: 'imgs/projects/lap-sys.jpg',          name: 'نظام إدارة المعامل الطبية', category: 'معمل' },
       ];
-      var gallery = document.getElementById('projectGallery');
-      if (gallery) {
+      var overlay = document.getElementById('lightboxOverlay');
+      var overlayImg = document.getElementById('lightboxImg');
+      var overlayCaption = document.getElementById('lightboxCaption');
+      var closeBtn = document.getElementById('lightboxClose');
+      var openLightbox = function(imgEl){
+        overlayImg.src = imgEl.dataset.full || imgEl.src;
+        overlayImg.alt = imgEl.dataset.name || imgEl.alt;
+        overlayCaption.textContent = [imgEl.dataset.name, imgEl.dataset.category].filter(Boolean).join(' · ');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden'; };
+      var closeLightbox = function(){
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';};
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      if (overlay) {
+        overlay.addEventListener('click', function(e){  if (e.target === overlay) closeLightbox();});
+        window.addEventListener('keydown', function(e){  if (e.key === 'Escape') closeLightbox();}); }
+      var setupGallery = function(galleryId, prevId, nextId, dotsId){
+        var gallery = document.getElementById(galleryId);
+        if (!gallery) return;
         gallery.innerHTML = projects.map(function(p){
           return '<article class="gallery-card">' +
             '<div class="gallery-media">' +
@@ -174,9 +192,9 @@
             '<div class="gallery-info"><h4>' + p.name + '</h4></div>' +
           '</article>';
         }).join('');
-        var prevBtn = document.getElementById('galPrev');
-        var nextBtn = document.getElementById('galNext');
-        var dotsWrap = document.getElementById('galDots');
+        var prevBtn = document.getElementById(prevId);
+        var nextBtn = document.getElementById(nextId);
+        var dotsWrap = document.getElementById(dotsId);
         var cards = gallery.querySelectorAll('.gallery-card');
         dotsWrap.innerHTML = '';
         cards.forEach(function(_, i){
@@ -208,25 +226,11 @@
         gallery.addEventListener('pointermove', function(e){
           if (!isDown) return;
           gallery.scrollLeft = scrollStart - (e.clientX - startX); });
-        var overlay = document.getElementById('lightboxOverlay');
-        var overlayImg = document.getElementById('lightboxImg');
-        var overlayCaption = document.getElementById('lightboxCaption');
-        var closeBtn = document.getElementById('lightboxClose');
-        var openLightbox = function(imgEl){
-          overlayImg.src = imgEl.dataset.full || imgEl.src;
-          overlayImg.alt = imgEl.dataset.name || imgEl.alt;
-          overlayCaption.textContent = [imgEl.dataset.name, imgEl.dataset.category].filter(Boolean).join(' · ');
-          overlay.classList.add('open');
-          document.body.style.overflow = 'hidden'; };
-        var closeLightbox = function(){
-          overlay.classList.remove('open');
-          document.body.style.overflow = '';};
         gallery.addEventListener('click', function(e){
           var img = e.target.closest('.gallery-img');
-          if (img) openLightbox(img); });
-        closeBtn.addEventListener('click', closeLightbox);
-        overlay.addEventListener('click', function(e){  if (e.target === overlay) closeLightbox();});
-        window.addEventListener('keydown', function(e){  if (e.key === 'Escape') closeLightbox();}); }
+          if (img) openLightbox(img); }); };
+      setupGallery('projectGallery', 'galPrev', 'galNext', 'galDots');
+      setupGallery('projectGalleryServices', 'galPrevServices', 'galNextServices', 'galDotsServices');
       var iconPaths = {
         pharmacy: '<circle cx="22" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M22 16v12M16 22h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
         labs: '<path d="M18 12h8M19 12v6l-6 10a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-6-10v-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 26h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
@@ -299,8 +303,6 @@
             '</div>' +
           '</article>'; };
       if (techGrid) { techGrid.innerHTML = techServices.map(renderTechCard).join(''); }
-      var featuredTechGrid = document.getElementById('featuredTechGrid');
-      if (featuredTechGrid) { featuredTechGrid.innerHTML = techServices.map(renderTechCard).join(''); }
       /* ==================الأجهزة والمعدات================== */
       var hardwareItems = [
         { icon:'printer', img:'imgs/hardware/printer.webp', name:'طابعة فواتير X-Printer', price:'48$' },
