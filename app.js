@@ -70,13 +70,13 @@
             nav.classList.remove('open');
             toggle.classList.remove('open');
             toggle.setAttribute('aria-expanded', 'false');  }  });  });
-      document.querySelectorAll('a[href^="#"]').forEach(function(a){
-        if (a.closest('#siteNav')) return;
+      document.addEventListener('click', function(e){
+        var a = e.target.closest('a[href^="#"]');
+        if (!a || a.closest('#siteNav')) return;
         var hash = a.getAttribute('href');
         if (hash && hash.length > 1) {
-          a.addEventListener('click', function(e){
-            e.preventDefault();
-            handleNavClick(hash);      });    }  });
+          e.preventDefault();
+          handleNavClick(hash); } });
       (function initialPage(){
         var initial = window.location.hash ? window.location.hash.slice(1) : 'home';
         if (anchorOnly.indexOf(initial) !== -1) {
@@ -284,9 +284,10 @@
       var softwareGrid = document.getElementById('softwareGrid');
       if (softwareGrid) {
         softwareGrid.innerHTML = softwareSystems.map(renderSoftwareCard).join(''); }
+      var scrollEndArrow = '<a href="#services" class="scroll-end-arrow" aria-label="عرض المزيد من الحلول"><span class="scroll-end-circle" aria-hidden="true">&larr;</span><span class="scroll-end-label">عرض المزيد</span></a>';
       var featuredGrid = document.getElementById('featuredGrid');
       if (featuredGrid) {
-        featuredGrid.innerHTML = softwareSystems.slice(0, 3).map(renderSoftwareCard).join(''); }
+        featuredGrid.innerHTML = softwareSystems.slice(0, 3).map(renderSoftwareCard).join('') + scrollEndArrow; }
       /* ==================خدمات التركيب================== */
       var techServices = [
         { icon:'cctv', name:'تركيب كاميرات المراقبة', desc:'توريد وتركيب أحدث أنظمة المراقبة IP وCCTV، مع ربطها بهاتفك وتخزين سحابي، لضمان أمن منشأتك على مدار الساعة.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
@@ -330,7 +331,7 @@
           '</article>'; };
       if (hardwareGrid) { hardwareGrid.innerHTML = hardwareItems.map(renderHardwareCard).join(''); }
       var featuredHardwareGrid = document.getElementById('featuredHardwareGrid');
-      if (featuredHardwareGrid) { featuredHardwareGrid.innerHTML = hardwareItems.slice(0, 5).map(renderHardwareCard).join(''); }
+      if (featuredHardwareGrid) { featuredHardwareGrid.innerHTML = hardwareItems.slice(0, 5).map(renderHardwareCard).join('') + scrollEndArrow; }
       /* ==================وسائل الدفع================== */
       var paymentMethods = [
         { icon:'visaCard', name:'فيزا كارد' },
