@@ -24,13 +24,19 @@
         var top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 12;
         window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' }); };
       var pages = document.querySelectorAll('.page');
-      var pageNames = ['home', 'services', 'projects'];
+      var pageNames = ['home', 'services'];
+      var anchorOnly = ['contact', 'projects'];
       var revealInPage = function(pageEl){
         pageEl.querySelectorAll('.reveal:not(.in-view)').forEach(function(el){  el.classList.add('in-view');});
         pageEl.querySelectorAll('.metric-num').forEach(function(el){
           if (!el.dataset.started && typeof animateCount === 'function') {
             el.dataset.started = '1';
             animateCount(el);    }  });};
+      var navHomeLink = document.getElementById('navHomeLink');
+      var navServicesLink = document.getElementById('navServicesLink');
+      var updateNavLinks = function(name){
+        if (navHomeLink) navHomeLink.style.display = (name === 'home') ? 'none' : '';
+        if (navServicesLink) navServicesLink.style.display = (name === 'services') ? 'none' : ''; };
       var showPage = function(name){
         if (pageNames.indexOf(name) === -1) return false;
         pages.forEach(function(p){
@@ -38,11 +44,13 @@
           p.classList.toggle('active', isActive); });
         var activePage = document.querySelector('.page[data-page="' + name + '"]');
         if (activePage) revealInPage(activePage);
+        updateNavLinks(name);
         return true; };
       var scrollToTop = function(){   window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); };
       var handleNavClick = function(hash){
         var name = hash.slice(1);
-        if (name === 'contact') {
+        if (anchorOnly.indexOf(name) !== -1) {
+          showPage('home');
           navigateToHash(hash);
           history.pushState(null, '', hash);
           return;}
@@ -71,13 +79,13 @@
             handleNavClick(hash);      });    }  });
       (function initialPage(){
         var initial = window.location.hash ? window.location.hash.slice(1) : 'home';
-        if (initial === 'contact') {
+        if (anchorOnly.indexOf(initial) !== -1) {
           showPage('home');
-          window.addEventListener('load', function(){ navigateToHash('#contact'); });
+          window.addEventListener('load', function(){ navigateToHash('#' + initial); });
         } else if (!showPage(initial)) {  showPage('home');} })();
       window.addEventListener('popstate', function(){
         var name = window.location.hash ? window.location.hash.slice(1) : 'home';
-        if (name !== 'contact') showPage(name);});
+        if (anchorOnly.indexOf(name) === -1) showPage(name);});
       var revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduceMotion) {
         var io = new IntersectionObserver(function(entries){
@@ -261,35 +269,38 @@
         { icon:'restaurant', tag:'مطاعم', name:'نظام إدارة المطاعم والكاشير', desc:'إدارة الطاولات والطلبات، ربط المطبخ بالكاشير، الفواتير والتوصيل، مع تقارير مبيعات لحظية.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
         { icon:'school', tag:'مدارس', name:'نظام إدارة المدارس', desc:'إدارة الطلاب، المعلمين، الصفوف، الدرجات، الشهادات، والمدفوعات المدرسية.', price:'_', note:'ابتداءً من', cta:'اطلب' }
       ];
+      var renderSoftwareCard = function(s){
+        return '<article class="software-card' + (s.comingSoon ? ' coming-soon' : '') + '">' +
+          '<div class="software-icon" style="color:var(--primary)">' + iconSvg(s.icon, 'var(--primary-soft)') + '</div>' +
+          '<div class="status-row"><span class="tag">' + s.tag + '</span>' + (s.comingSoon ? '<span class="badge-soon">' + s.badge + '</span>' : '<span class="status-ready">✓ جاهز للتشغيل</span>') + '</div>' +
+          '<h3>' + s.name + '</h3>' +
+          '<p>' + s.desc + '</p>' +
+          '<div class="price-row"><span class="price-tag" dir="ltr">' + s.price + '</span>' + '</div>' +
+        '</article>'; };
       var softwareGrid = document.getElementById('softwareGrid');
       if (softwareGrid) {
-        softwareGrid.innerHTML = softwareSystems.map(function(s){
-          return '<article class="software-card' + (s.comingSoon ? ' coming-soon' : '') + '">' +
-            '<div class="software-icon" style="color:var(--primary)">' + iconSvg(s.icon, 'var(--primary-soft)') + '</div>' +
-            '<div class="status-row"><span class="tag">' + s.tag + '</span>' + (s.comingSoon ? '<span class="badge-soon">' + s.badge + '</span>' : '<span class="status-ready">✓ جاهز للتشغيل</span>') + '</div>' +
-            '<h3>' + s.name + '</h3>' +
-            '<p>' + s.desc + '</p>' +
-            '<div class="price-row"><span class="price-tag" dir="ltr">' + s.price + '</span>' + '</div>' +
-          '</article>';
-        }).join(''); }
+        softwareGrid.innerHTML = softwareSystems.map(renderSoftwareCard).join(''); }
+      var featuredGrid = document.getElementById('featuredGrid');
+      if (featuredGrid) {
+        featuredGrid.innerHTML = softwareSystems.slice(0, 3).map(renderSoftwareCard).join(''); }
       /* ==================خدمات التركيب================== */
       var techServices = [
         { icon:'cctv', name:'تركيب كاميرات المراقبة', desc:'توريد وتركيب أحدث أنظمة المراقبة IP وCCTV، مع ربطها بهاتفك وتخزين سحابي، لضمان أمن منشأتك على مدار الساعة.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
         { icon:'network', name:'إنشاء شبكات وربط الأجهزة', desc:'تصميم وتركيب شبكات محلية (LAN/WAN)، ربط الفروع، حلول VPN، وإدارة الخوادم لضمان استمرارية عملك دون انقطاع.', price:'_', note:'ابتداءً من', cta:'اطلب ' }
       ];
       var techGrid = document.getElementById('techGrid');
-      if (techGrid) {
-        techGrid.innerHTML = techServices.map(function(t){
-          return '<article class="tech-card">' +
+      var renderTechCard = function(t){
+        return '<article class="tech-card">' +
             '<div class="tech-icon" style="color:var(--accent)">' + iconSvg(t.icon, 'var(--accent-soft)') + '</div>' +
             '<div>' +
               '<h3>' + t.name + '</h3>' +
               '<p>' + t.desc + '</p>' +
               '<div class="price-row"><span class="price-tag" dir="ltr">' + t.price + '</span><span class="price-note">'+ '</span></div>' +
-            
             '</div>' +
-          '</article>';
-        }).join(''); }
+          '</article>'; };
+      if (techGrid) { techGrid.innerHTML = techServices.map(renderTechCard).join(''); }
+      var featuredTechGrid = document.getElementById('featuredTechGrid');
+      if (featuredTechGrid) { featuredTechGrid.innerHTML = techServices.map(renderTechCard).join(''); }
       /* ==================الأجهزة والمعدات================== */
       var hardwareItems = [
         { icon:'printer', img:'imgs/hardware/printer.webp', name:'طابعة فواتير X-Printer', price:'48$' },
@@ -306,17 +317,18 @@
         { icon:'fingerprint', img:'imgs/hardware/fingerprint-attendance.jpg', name:'جهاز بصمة الحضور والانصراف', price:'' },
       ];
       var hardwareGrid = document.getElementById('hardwareGrid');
-      if (hardwareGrid) {
-        hardwareGrid.innerHTML = hardwareItems.map(function(h){
-          var media = h.img
+      var renderHardwareCard = function(h){
+        var media = h.img
             ? '<div class="hardware-media"><img src="' + h.img + '" alt="' + h.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;hardware-icon&quot; style=&quot;color:var(--primary)&quot;>' + iconSvgPlain(h.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
             : '<div class="hardware-icon" style="color:var(--primary)">' + iconSvgPlain(h.icon) + '</div>';
           return '<article class="hardware-card">' +
             media +
             '<h4>' + h.name + '</h4>' +
             (h.price ? '<span class="hardware-price" dir="ltr">' + h.price + '</span>' : '<span class="hardware-price hardware-price-empty">_</span>') +
-          '</article>';
-        }).join(''); }
+          '</article>'; };
+      if (hardwareGrid) { hardwareGrid.innerHTML = hardwareItems.map(renderHardwareCard).join(''); }
+      var featuredHardwareGrid = document.getElementById('featuredHardwareGrid');
+      if (featuredHardwareGrid) { featuredHardwareGrid.innerHTML = hardwareItems.slice(0, 5).map(renderHardwareCard).join(''); }
       /* ==================وسائل الدفع================== */
       var paymentMethods = [
         { icon:'visaCard', name:'فيزا كارد' },
@@ -327,13 +339,14 @@
         { icon:'ocash', img:'imgs/logos/O-Cash.jpg', name:'أوكاش' }
       ];
       var paymentGrid = document.getElementById('paymentGrid');
-      if (paymentGrid) {
-        paymentGrid.innerHTML = paymentMethods.map(function(p){
-          var media = p.img
+      var renderPaymentCard = function(p){
+        var media = p.img
             ? '<div class="payment-icon payment-logo"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;payment-icon&quot;>' + iconSvgPlain(p.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
             : '<div class="payment-icon">' + iconSvgPlain(p.icon) + '</div>';
-          return '<div class="payment-card">' + media + '<span>' + p.name + '</span></div>';
-        }).join(''); }
+          return '<div class="payment-card">' + media + '<span>' + p.name + '</span></div>'; };
+      if (paymentGrid) { paymentGrid.innerHTML = paymentMethods.map(renderPaymentCard).join(''); }
+      var paymentGridHome = document.getElementById('paymentGridHome');
+      if (paymentGridHome) { paymentGridHome.innerHTML = paymentMethods.map(renderPaymentCard).join(''); }
       /* ==================الباقات================== */
       var packages = [
         { name:'باقة المتجر الأساسية', price:'$890', period:'دفعة واحدة', features:['نظام إدارة السوبر ماركت','شاشة لمس','طابعة فواتير X-Printer','ماسح باركود لاسلكي','درج نقدية إلكتروني'], cta:'اطلب الباقة الآن' },
