@@ -5,7 +5,8 @@ html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:14px "Cairo",Inter,system-ui,"Segoe UI",sans-serif;direction:rtl;text-align:right;overflow-x:hidden;max-width:100%}
 h1,h2,h3{font-family:"Cairo","Space Grotesk",Inter,system-ui,sans-serif;letter-spacing:normal}
 header,main,footer{max-width:1100px;margin:auto;padding:8px}
-header{ display:flex;align-items:center;justify-content:space-between; position:sticky;top:0;z-index:50;background:rgba(244,247,251,.85);backdrop-filter:blur(10px); transition:box-shadow .3s var(--ease),background .3s var(--ease); border-radius:0 0 16px 16px;}
+main{padding-top:calc(var(--header-h) + 16px)}
+header{ display:flex;align-items:center;justify-content:space-between; position:fixed;top:0;left:0;right:0;margin:8px auto;z-index:50;background:rgba(244,247,251,.85);backdrop-filter:blur(10px); transition:box-shadow .3s var(--ease),background .3s var(--ease); border-radius:16px;}
 header.scrolled{background:rgba(255,255,255,.9);box-shadow:0 8px 24px #17203314}
 .brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:var(--text);text-decoration:none;font-family:"Cairo","Space Grotesk",sans-serif}
 .brand img{width:34px;height:34px}
