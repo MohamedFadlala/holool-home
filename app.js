@@ -118,8 +118,9 @@
       } else {  metrics.forEach(animateCount);}
       /* ==================إضافة لوقو شركة=================== */
       var companies = [
-        { img: 'imgs/logos/elgwharacafelogo.jpg',      name: 'El Gwhara Cafe' },
-        { img: 'imgs/logos/goldencafelogo.jpg',         name: 'Golden Cafe' },];
+        { img: 'imgs/logos/BOK-logo.jpg',         name: 'بنك الخرطوم' },
+        { img: 'imgs/logos/elgwharacafelogo.jpg',      name: 'كافيه الجوهرة' },
+        { img: 'imgs/logos/goldencafelogo.jpg',         name: 'كافيه قولدن' },];
       var track = document.getElementById('marqueeTrack');
       if (track) {
         var buildLogoItems = function(hidden){
@@ -131,26 +132,27 @@
         track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }
       /* =========إضافة مشروع======== */
           var projects = [
-        { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'Bahga Agashi',            category: 'Restaurant' },
-        { img: 'imgs/projects/barbeRestaurant.jpg',     name: 'Barbe Restaurant',        category: 'Restaurant' },
-        { img: 'imgs/projects/booshe.jpg',               name: 'Booshe',                  category: 'Fashion & Retail' },
-        { img: 'imgs/projects/elawalJuices.jpg',         name: 'El Awal Juices',          category: 'Juice Bar' },
-        { img: 'imgs/projects/eljwharaRest.jpg',         name: 'El Jawhara Restaurant',   category: 'Restaurant' },
-        { img: 'imgs/projects/generalElectric.jpg',      name: 'General Electric Store',  category: 'Electronics Retail' },
-        { img: 'imgs/projects/GFitnessClub.jpg',         name: 'G Fitness Club',          category: 'Fitness & Gym' },
-        { img: 'imgs/projects/goldenCafe&rest.jpg',      name: 'Golden Cafe & Restaurant',category: 'Cafe & Restaurant' },
-        { img: 'imgs/projects/harbyTravelTourism.jpg',   name: 'Harby Travel & Tourism',  category: 'Travel & Tourism' },
-        { img: 'imgs/projects/karamElsham.jpg',          name: 'Karam El Sham',           category: 'Restaurant' },
-        { img: 'imgs/projects/lemonRest.jpg',            name: 'Lemon Restaurant',        category: 'Restaurant' },
-        { img: 'imgs/projects/megaStore.jpg',            name: 'Mega Store',              category: 'Retail' },
-        { img: 'imgs/projects/myIcecreem.jpg',           name: 'My Icecream',            category: 'Desserts & Ice Cream' },
-        { img: 'imgs/projects/pharmacySys.jpg',          name: 'Pharmacy Management System', category: 'Pharmacy' },
-        { img: 'imgs/projects/quickBurger.jpg',          name: 'Quick Burger',            category: 'Restaurant' },
-        { img: 'imgs/projects/redJewelcafe.jpg',         name: 'Red Jewel Cafe',          category: 'Cafe' },
-        { img: 'imgs/projects/restaurantSys.jpg',        name: 'Restaurant Management System', category: 'Restaurant' },
-        { img: 'imgs/projects/saifCenter.jpg',           name: 'Saif Center',             category: 'Restaurant' },
-        { img: 'imgs/projects/shahdElsham.jpg',          name: 'Shahd El Sham',           category: 'Restaurant' },
-        { img: 'imgs/projects/supermarketSys.jpg',       name: 'Supermarket Management System', category: 'Retail' }
+        { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'اقاشي البهة',            category: 'مطعم' },
+        { img: 'imgs/projects/barbeRestaurant.jpg',     name: 'مطعم باربي',        category: 'مطعم' },
+        { img: 'imgs/projects/booshe.jpg',               name: 'بوتيك بوشي',                  category: 'بوتيك' },
+        { img: 'imgs/projects/elawalJuices.jpg',         name: 'عصائر الأول',          category: ' عصائر' },
+        { img: 'imgs/projects/eljwharaRest.jpg',         name: 'كافتيريا الجوهرة',   category: 'مطعم' },
+        { img: 'imgs/projects/generalElectric.jpg',      name: 'جينيرال اليكتريك',  category: 'تجزئة إلكترونيات' },
+        { img: 'imgs/projects/GFitnessClub.jpg',         name: 'جيم',          category: 'لياقة ونادي رياضي' },
+        { img: 'imgs/projects/goldenCafe&rest.jpg',      name: 'مطعم وكافيه قولدن',category: 'مقهى ومطعم' },
+        { img: 'imgs/projects/harbyTravelTourism.jpg',   name: 'وكالة سفر الحربي',  category: 'سفر وسياحة' },
+        { img: 'imgs/projects/karamElsham.jpg',          name: 'كرم الشام',           category: 'مطعم' },
+        { img: 'imgs/projects/lemonRest.jpg',            name: 'ليمون',        category: 'مطعم' },
+        { img: 'imgs/projects/megaStore.jpg',            name: 'ميجا ستور',              category: 'تجزئة' },
+        { img: 'imgs/projects/myIcecreem.jpg',           name: 'آيسكريمي',            category: 'حلويات وآيس كريم' },
+        { img: 'imgs/projects/pharmacySys.jpg',          name: 'نظام إدرة الصيدليات', category: 'صيدلية' },
+        { img: 'imgs/projects/quickBurger.jpg',          name: 'كويك بيرقر',            category: 'مطعم' },
+        { img: 'imgs/projects/redJewelcafe.jpg',         name: 'كافيه الجوهرة الحمراء',          category: 'مقهى' },
+        { img: 'imgs/projects/restaurantSys.jpg',        name: 'نظام إدرة المطاعم', category: 'مطعم' },
+        { img: 'imgs/projects/saifCenter.jpg',           name: 'سيف للأسماك',             category: 'مطعم' },
+        { img: 'imgs/projects/shahdElsham.jpg',          name: 'شهد الشام',           category: 'مطعم' },
+        { img: 'imgs/projects/supermarketSys.jpg',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' }
+        ,        { img: 'imgs/projects/lap-sys.jpg',          name: 'نظام إدارة المعامل الطبية', category: 'معمل' },
       ];
       var gallery = document.getElementById('projectGallery');
       if (gallery) {
@@ -171,7 +173,7 @@
         dotsWrap.innerHTML = '';
         cards.forEach(function(_, i){
           var dot = document.createElement('button');
-          dot.setAttribute('aria-label', 'Go to project ' + (i + 1));
+          dot.setAttribute('aria-label', 'الانتقال إلى المشروع ' + (i + 1));
           dot.addEventListener('click', function(){ cards[i].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'start', block: 'nearest' }); });
           dotsWrap.appendChild(dot); });
         var dots = dotsWrap.querySelectorAll('button');
@@ -217,13 +219,151 @@
         closeBtn.addEventListener('click', closeLightbox);
         overlay.addEventListener('click', function(e){  if (e.target === overlay) closeLightbox();});
         window.addEventListener('keydown', function(e){  if (e.key === 'Escape') closeLightbox();}); }
+      var iconPaths = {
+        pharmacy: '<circle cx="22" cy="22" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M22 16v12M16 22h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
+        labs: '<path d="M18 12h8M19 12v6l-6 10a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-6-10v-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 26h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+        warehouse: '<rect x="10" y="20" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="24" y="20" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="17" y="10" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/>',
+        attendance: '<circle cx="22" cy="22" r="10" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 15v7l5 3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>',
+        supermarket: '<path d="M10 12h3l3 15h14l3-11H16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="31" r="1.8" fill="currentColor"/><circle cx="28" cy="31" r="1.8" fill="currentColor"/>',
+        restaurant: '<path d="M15 10v10a3 3 0 0 0 3 3v11M15 10v6M18 10v6M21 10v6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M29 10c-3 0-4 4-4 8s1 5 4 5v11" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+        school: '<path d="M22 13 L36 19 L22 25 L8 19 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 22v6c0 2 4 4 8 4s8-2 8-4v-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 19v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+        cctv: '<rect x="8" y="17" width="18" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M26 20l8-4v14l-8-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="14" cy="22" r="2" fill="currentColor"/>',
+        network: '<circle cx="22" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="30" r="3.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="32" cy="30" r="3.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M22 15.5 L14 27 M22 15.5 L30 27" stroke="currentColor" stroke-width="2" fill="none"/>',
+        touchscreen: '<rect x="8" y="8" width="28" height="20" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M17 34h10M22 28v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="22" cy="18" r="2" fill="currentColor"/>',
+        printer: '<rect x="10" y="15" width="24" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="14" y="8" width="16" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="27" width="16" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>',
+        scanner: '<path d="M14 12 L30 28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><rect x="24" y="24" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10l4 4M12 14l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+        drawer: '<rect x="8" y="14" width="28" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 22h28" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="27" r="1.8" fill="currentColor"/>',
+        posAllInOne: '<rect x="10" y="8" width="24" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 24l-2 10h16l-2-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><rect x="18" y="12" width="8" height="4" rx="1" fill="currentColor"/>',
+        labelPrinter: '<rect x="10" y="14" width="24" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 28l2 6h8l2-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 21h16" stroke="currentColor" stroke-width="1.6"/>',
+        fingerprint: '<path d="M22 12a10 10 0 0 1 10 10v4a10 10 0 0 1-3 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 16a6 6 0 0 1 6 6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 22a8 8 0 0 1 8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 20a2 2 0 0 1 2 2v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+        ipCamera: '<path d="M10 24a12 6 0 0 1 24 0" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="10" y="24" width="24" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="22" cy="27" r="2" fill="currentColor"/>',
+        nvr: '<rect x="8" y="14" width="28" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="14" cy="22" r="2" fill="currentColor"/><path d="M20 22h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+        netSwitch: '<rect x="8" y="16" width="28" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M13 20v4M19 20v4M25 20v4M31 20v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+        computer: '<rect x="7" y="10" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12.5 27h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16.5 23v4" stroke="currentColor" stroke-width="2.2"/><rect x="29" y="11" width="8" height="21" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="33" cy="27.5" r="1.2" fill="currentColor"/>',
+        visaCard: '<rect x="2" y="10" width="40" height="24" rx="5" fill="#fff" stroke="#e2e6ec" stroke-width="1.5"/><rect x="2" y="10" width="40" height="6" fill="#f4f6f9"/><text x="22" y="28" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800" font-style="italic" fill="#1A1F71" text-anchor="middle">VISA</text>',
+        mastercardCard: '<rect x="2" y="10" width="40" height="24" rx="5" fill="#fff" stroke="#e2e6ec" stroke-width="1.5"/><circle cx="18" cy="22" r="8" fill="#EB001B"/><circle cx="27" cy="22" r="8" fill="#F79E1B"/><path d="M22.5 15.8a8 8 0 0 1 0 12.4 8 8 0 0 1 0-12.4Z" fill="#FF5F00"/>',
+        bankTransfer: '<rect x="2" y="10" width="40" height="24" rx="5" fill="#fff" stroke="#e2e6ec" stroke-width="1.5"/><path d="M22 14 L34 21H10Z" fill="#2457c5"/><rect x="12" y="22" width="4" height="8" fill="#2457c5"/><rect x="20" y="22" width="4" height="8" fill="#2457c5"/><rect x="28" y="22" width="4" height="8" fill="#2457c5"/><rect x="9" y="31" width="26" height="2.5" rx="1" fill="#2457c5"/>',
+        bankak: '<rect x="2" y="6" width="40" height="32" rx="9" fill="#0e63d6"/><rect x="10" y="15" width="24" height="15" rx="3" fill="#fff"/><rect x="10" y="15" width="24" height="4.5" fill="#0e63d6" opacity=".18"/><circle cx="29" cy="23" r="2.2" fill="#0e63d6"/>',
+        fawry: '<rect x="2" y="6" width="40" height="32" rx="9" fill="#f7941d"/><rect x="15" y="12" width="14" height="20" rx="3" fill="#fff"/><path d="M18 21l3 3 5-6" stroke="#f7941d" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+        ocash: '<rect x="2" y="6" width="40" height="32" rx="9" fill="#0fa968"/><circle cx="17" cy="23" r="6.5" fill="none" stroke="#fff" stroke-width="2.1"/><circle cx="27" cy="19" r="6.5" fill="none" stroke="#fff" stroke-width="2.1"/>'
+      };
+      var iconSvg = function(name, bg){
+        return '<svg viewBox="0 0 44 44"><rect width="44" height="44" rx="14" fill="' + bg + '"/>' + (iconPaths[name] || '') + '</svg>'; };
+      var iconSvgPlain = function(name){
+        return '<svg viewBox="0 0 44 44">' + (iconPaths[name] || '') + '</svg>'; };
+      /* ==================الأنظمة================== */
+      var softwareSystems = [
+        { icon:'pharmacy', tag:'صيدليات', name:'نظام إدارة الصيدليات', desc:'إدارة كاملة للأدوية والمخزون والمبيعات، مدعومة بذكاء اصطناعي للكشف عن التفاعلات الدوائية وتقارير متقدمة.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'labs', tag:'معامل وعيادات', name:'نظام المعامل والعيادات', desc:'إدارة مواعيد المرضى، التحاليل، الأشعة، والنتائج والفواتير الطبية في نظام واحد متكامل مع المختبرات.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'warehouse', tag:'مخازن', name:'نظام إدارة المخازن', desc:'إدارة متعددة المستودعات، تتبع الأصناف، صلاحيات المستخدمين، حركات الإدخال والإخراج، والجرد الآلي.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'attendance', tag:'موارد بشرية', name:'نظام الحضور والانصراف', desc:'بصمة إلكترونية، تقارير الغياب والتأخير، احتساب الرواتب تلقائياً، وإدارة إجازات الموظفين.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'supermarket', tag:'تجزئة', name:'نظام إدارة السوبر ماركت', desc:'نقطة بيع متكاملة، إدارة العملاء والعروض وبرنامج الولاء، مع تقارير مبيعات ومخزون لحظية.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'restaurant', tag:'مطاعم', name:'نظام إدارة المطاعم والكاشير', desc:'إدارة الطاولات والطلبات، ربط المطبخ بالكاشير، الفواتير والتوصيل، مع تقارير مبيعات لحظية.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'school', tag:'مدارس', name:'نظام إدارة المدارس', desc:'إدارة الطلاب، المعلمين، الصفوف، الدرجات، الشهادات، والمدفوعات المدرسية.', price:'_', note:'ابتداءً من', cta:'اطلب' }
+      ];
+      var softwareGrid = document.getElementById('softwareGrid');
+      if (softwareGrid) {
+        softwareGrid.innerHTML = softwareSystems.map(function(s){
+          return '<article class="software-card' + (s.comingSoon ? ' coming-soon' : '') + '">' +
+            '<div class="software-icon" style="color:var(--primary)">' + iconSvg(s.icon, 'var(--primary-soft)') + '</div>' +
+            '<div class="status-row"><span class="tag">' + s.tag + '</span>' + (s.comingSoon ? '<span class="badge-soon">' + s.badge + '</span>' : '<span class="status-ready">✓ جاهز للتشغيل</span>') + '</div>' +
+            '<h3>' + s.name + '</h3>' +
+            '<p>' + s.desc + '</p>' +
+            '<div class="price-row"><span class="price-tag" dir="ltr">' + s.price + '</span>' + '</div>' +
+          '</article>';
+        }).join(''); }
+      /* ==================خدمات التركيب================== */
+      var techServices = [
+        { icon:'cctv', name:'تركيب كاميرات المراقبة', desc:'توريد وتركيب أحدث أنظمة المراقبة IP وCCTV، مع ربطها بهاتفك وتخزين سحابي، لضمان أمن منشأتك على مدار الساعة.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
+        { icon:'network', name:'إنشاء شبكات وربط الأجهزة', desc:'تصميم وتركيب شبكات محلية (LAN/WAN)، ربط الفروع، حلول VPN، وإدارة الخوادم لضمان استمرارية عملك دون انقطاع.', price:'_', note:'ابتداءً من', cta:'اطلب ' }
+      ];
+      var techGrid = document.getElementById('techGrid');
+      if (techGrid) {
+        techGrid.innerHTML = techServices.map(function(t){
+          return '<article class="tech-card">' +
+            '<div class="tech-icon" style="color:var(--accent)">' + iconSvg(t.icon, 'var(--accent-soft)') + '</div>' +
+            '<div>' +
+              '<h3>' + t.name + '</h3>' +
+              '<p>' + t.desc + '</p>' +
+              '<div class="price-row"><span class="price-tag" dir="ltr">' + t.price + '</span><span class="price-note">'+ '</span></div>' +
+            
+            '</div>' +
+          '</article>';
+        }).join(''); }
+      /* ==================الأجهزة والمعدات================== */
+      var hardwareItems = [
+        { icon:'printer', img:'imgs/hardware/printer.webp', name:'طابعة فواتير X-Printer', price:'48$' },
+        { icon:'posAllInOne', img:'imgs/hardware/pos-all-in-one.jpg', name:'جهاز كاشير All-in-One', price:'' },
+        { icon:'touchscreen', img:'imgs/hardware/touchscreen-dell.jpg', name:'شاشة لمس Dell', price:'360$' },
+        { icon:'touchscreen', img:'imgs/hardware/touchscreen-nigachi.jpg', name:'شاشة لمس Nigachi', price:'' },
+        { icon:'printer', img:'imgs/hardware/printer-nigachi.jpg', name:'طابعة فواتير حرارية Nigachi', price:'' },
+        { icon:'labelPrinter', img:'imgs/hardware/barcode-printer-nigachi.jpg', name:'طابعة باركود Nigachi', price:'' },
+        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wired.jpg', name:'قارئ باركود سلكي', price:'' },
+        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wireless.jpg', name:'قارئ باركود لاسلكي', price:'' },
+        { icon:'scanner', img:'imgs/hardware/2d-presentation-scanner.jpg', name:'سكانر 2D Presentation', price:'' },
+        { icon:'drawer', img:'imgs/hardware/cash-drawer.jpg', name:'درج نقدي إلكتروني', price:'' },
+        { icon:'computer', img:'imgs/hardware/computer.jpg', name:'جهاز كمبيوتر Dell ,HP , Lenovo', price:'' },
+        { icon:'fingerprint', img:'imgs/hardware/fingerprint-attendance.jpg', name:'جهاز بصمة الحضور والانصراف', price:'' },
+      ];
+      var hardwareGrid = document.getElementById('hardwareGrid');
+      if (hardwareGrid) {
+        hardwareGrid.innerHTML = hardwareItems.map(function(h){
+          var media = h.img
+            ? '<div class="hardware-media"><img src="' + h.img + '" alt="' + h.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;hardware-icon&quot; style=&quot;color:var(--primary)&quot;>' + iconSvgPlain(h.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
+            : '<div class="hardware-icon" style="color:var(--primary)">' + iconSvgPlain(h.icon) + '</div>';
+          return '<article class="hardware-card">' +
+            media +
+            '<h4>' + h.name + '</h4>' +
+            (h.price ? '<span class="hardware-price" dir="ltr">' + h.price + '</span>' : '<span class="hardware-price hardware-price-empty">_</span>') +
+          '</article>';
+        }).join(''); }
+      /* ==================وسائل الدفع================== */
+      var paymentMethods = [
+        { icon:'visaCard', name:'فيزا كارد' },
+        { icon:'mastercardCard', name:'ماستر كارد' },
+        { icon:'bankTransfer', name:'حساب بنكي دولي' },
+        { icon:'bankak', img:'imgs/logos/bankak.png', name:'بنكك' },
+        { icon:'fawry', img:'imgs/logos/fawry.png', name:'فوري' },
+        { icon:'ocash', img:'imgs/logos/O-Cash.jpg', name:'أوكاش' }
+      ];
+      var paymentGrid = document.getElementById('paymentGrid');
+      if (paymentGrid) {
+        paymentGrid.innerHTML = paymentMethods.map(function(p){
+          var media = p.img
+            ? '<div class="payment-icon payment-logo"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;payment-icon&quot;>' + iconSvgPlain(p.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
+            : '<div class="payment-icon">' + iconSvgPlain(p.icon) + '</div>';
+          return '<div class="payment-card">' + media + '<span>' + p.name + '</span></div>';
+        }).join(''); }
+      /* ==================الباقات================== */
+      var packages = [
+        { name:'باقة المتجر الأساسية', price:'$890', period:'دفعة واحدة', features:['نظام إدارة السوبر ماركت','شاشة لمس','طابعة فواتير X-Printer','ماسح باركود لاسلكي','درج نقدية إلكتروني'], cta:'اطلب الباقة الآن' },
+        { name:'باقة الصيدلية المتكاملة', price:'$1,950', period:'دفعة واحدة', featured:true, badge:'الأكثر طلباً', features:['نظام إدارة الصيدليات','جهاز نقاط بيع متكامل','طابعة فواتير حرارية','ماسح باركود لاسلكي','تركيب وتدريب الفريق مجاناً'], cta:'اطلب الباقة الآن' },
+      ];
+      var packageGrid = document.getElementById('packageGrid');
+      if (packageGrid) {
+        packageGrid.innerHTML = packages.map(function(p){
+          if (p.custom) {
+            return '<article class="package-card custom-package">' +
+              '<h3>' + p.name + '</h3>' +
+              '<p>' + p.desc + '</p>' +
+              '<a class="btn" href="#contact">' + p.cta + '</a>' +
+            '</article>';
+          }
+          return '<article class="package-card' + (p.featured ? ' featured' : '') + '">' +
+            (p.badge ? '<span class="popular-badge">' + p.badge + '</span>' : '') +
+            '<h3>' + p.name + '</h3>' +
+            '<div class="package-price"><span class="amount" dir="ltr">' + p.price + '</span><span class="period">' + p.period + '</span></div>' +
+            '<ul class="package-features">' + p.features.map(function(f){ return '<li>' + f + '</li>'; }).join('') + '</ul>' +
+            '<a class="btn" href="#contact">' + p.cta + '</a>' +
+          '</article>';
+        }).join(''); }
       document.querySelectorAll('.copyable').forEach(function(el){
         var pressTimer = null, longPressed = false;
         var LONG_PRESS_MS = 550;
         var showCopied = function(){
           var toast = document.createElement('span');
           toast.className = 'copy-toast';
-          toast.textContent = 'Copied';
+          toast.textContent = 'تم النسخ';
           el.appendChild(toast);
           requestAnimationFrame(function(){ toast.classList.add('show'); });
           setTimeout(function(){
