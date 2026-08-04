@@ -132,7 +132,7 @@
         track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }
       /* =========إضافة مشروع======== */
           var projects = [
-        { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'اقاشي البهة',            category: 'مطعم' },
+        { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'اقاشي البهجة',            category: 'مطعم' },
         { img: 'imgs/projects/barbeRestaurant.jpg',     name: 'مطعم باربي',        category: 'مطعم' },
         { img: 'imgs/projects/booshe.jpg',               name: 'بوتيك بوشي',                  category: 'بوتيك' },
         { img: 'imgs/projects/elawalJuices.jpg',         name: 'عصائر الأول',          category: ' عصائر' },
