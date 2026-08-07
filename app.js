@@ -159,8 +159,11 @@
         { img: 'imgs/projects/restaurantSys.jpg',        name: 'نظام إدرة المطاعم', category: 'مطعم' },
         { img: 'imgs/projects/saifCenter.jpg',           name: 'سيف للأسماك',             category: 'مطعم' },
         { img: 'imgs/projects/shahdElsham.jpg',          name: 'شهد الشام',           category: 'مطعم' },
-        { img: 'imgs/projects/supermarketSys.jpg',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' }
-        ,        { img: 'imgs/projects/lap-sys.jpg',          name: 'نظام إدارة المعامل الطبية', category: 'معمل' },
+        { img: 'imgs/projects/supermarketSys.jpg',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' } ,   
+        { img: 'imgs/projects/salonsys.jpg',          name: 'نظام إدارة صالونات الحلاقة', category: 'حلاقة' },
+        { img: 'imgs/projects/restaurantSystem.jpg',          name: 'نظام الكاشير', category: 'مطعم' },
+        { img: 'imgs/projects/carsmangmentsys.jpg',          name: 'نظام إدارة معارض السيارات', category: 'معارض' },
+        { img: 'imgs/projects/goldsys.jpg',          name: 'نظام إدارة محلات الذهب والمجوهرات', category: 'محلات' },
       ];
       var overlay = document.getElementById('lightboxOverlay');
       var overlayImg = document.getElementById('lightboxImg');
