@@ -24,7 +24,10 @@
         var top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 12;
         window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' }); };
       var pages = document.querySelectorAll('.page');
-      var pageNames = ['home', 'services'];
+      var pageNames = ['home', 'services', 'product'];
+      var productSlugs = ['pharmacy', 'labs', 'warehouse', 'attendance', 'supermarket', 'restaurant', 'school'];
+      var renderProductPage;
+      var pendingProductSlug = null;
       var anchorOnly = ['contact', 'projects'];
       var revealInPage = function(pageEl){
         pageEl.querySelectorAll('.reveal:not(.in-view)').forEach(function(el){  el.classList.add('in-view');});
@@ -44,11 +47,24 @@
           p.classList.toggle('active', isActive); });
         var activePage = document.querySelector('.page[data-page="' + name + '"]');
         if (activePage) revealInPage(activePage);
+        if (name === 'home') document.title = 'حلول التقنية | التحول الرقمي للأعمال';
+        if (name === 'services') document.title = 'أنظمة حلول التقنية | تحول رقمي مستمر';
         updateNavLinks(name);
+        return true; };
+      var openProduct = function(slug){
+        if (productSlugs.indexOf(slug) === -1) return false;
+        if (typeof renderProductPage === 'function') renderProductPage(slug);
+        else pendingProductSlug = slug;
+        showPage('product');
+        scrollToTop();
         return true; };
       var scrollToTop = function(){   window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); };
       var handleNavClick = function(hash){
         var name = hash.slice(1);
+        if (productSlugs.indexOf(name) !== -1) {
+          openProduct(name);
+          history.pushState(null, '', hash);
+          return; }
         if (anchorOnly.indexOf(name) !== -1) {
           showPage('home');
           navigateToHash(hash);
@@ -82,10 +98,13 @@
         if (anchorOnly.indexOf(initial) !== -1) {
           showPage('home');
           window.addEventListener('load', function(){ navigateToHash('#' + initial); });
+        } else if (productSlugs.indexOf(initial) !== -1) {
+          openProduct(initial);
         } else if (!showPage(initial)) {  showPage('home');} })();
       window.addEventListener('popstate', function(){
         var name = window.location.hash ? window.location.hash.slice(1) : 'home';
-        if (anchorOnly.indexOf(name) === -1) showPage(name);});
+        if (productSlugs.indexOf(name) !== -1) openProduct(name);
+        else if (anchorOnly.indexOf(name) === -1) showPage(name);});
       var revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !reduceMotion) {
         var io = new IntersectionObserver(function(entries){
@@ -268,21 +287,34 @@
         return '<svg viewBox="0 0 44 44">' + (iconPaths[name] || '') + '</svg>'; };
       /* ==================الأنظمة================== */
       var softwareSystems = [
-        { icon:'pharmacy', tag:'صيدليات', name:'نظام إدارة الصيدليات', desc:'إدارة كاملة للأدوية والمخزون والمبيعات، مدعومة بذكاء اصطناعي للكشف عن التفاعلات الدوائية وتقارير متقدمة.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'labs', tag:'معامل وعيادات', name:'نظام المعامل والعيادات', desc:'إدارة مواعيد المرضى، التحاليل، الأشعة، والنتائج والفواتير الطبية في نظام واحد متكامل مع المختبرات.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'warehouse', tag:'مخازن', name:'نظام إدارة المخازن', desc:'إدارة متعددة المستودعات، تتبع الأصناف، صلاحيات المستخدمين، حركات الإدخال والإخراج، والجرد الآلي.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'attendance', tag:'موارد بشرية', name:'نظام الحضور والانصراف', desc:'بصمة إلكترونية، تقارير الغياب والتأخير، احتساب الرواتب تلقائياً، وإدارة إجازات الموظفين.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'supermarket', tag:'تجزئة', name:'نظام إدارة السوبر ماركت', desc:'نقطة بيع متكاملة، إدارة العملاء والعروض وبرنامج الولاء، مع تقارير مبيعات ومخزون لحظية.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'restaurant', tag:'مطاعم', name:'نظام إدارة المطاعم والكاشير', desc:'إدارة الطاولات والطلبات، ربط المطبخ بالكاشير، الفواتير والتوصيل، مع تقارير مبيعات لحظية.', price:'_', note:'ابتداءً من', cta:'اطلب ' },
-        { icon:'school', tag:'مدارس', name:'نظام إدارة المدارس', desc:'إدارة الطلاب، المعلمين، الصفوف، الدرجات، الشهادات، والمدفوعات المدرسية.', price:'_', note:'ابتداءً من', cta:'اطلب' }
+        { slug:'pharmacy', icon:'pharmacy', tag:'صيدليات', name:'نظام إدارة الصيدليات', headline:'صيدليتك مترابطة، من الرف إلى القرار.', desc:'رقمنة المبيعات والمخزون والصلاحيات والتقارير، مع تشغيل محلي ومزامنة سحابية تلقائية.', features:['بيع سريع وتتبع دقيق للأدوية','تنبيهات النواقص والصلاحية','تقارير موحدة للفروع'], outcome:'مخزون أدق وخدمة أسرع ورؤية كاملة للصيدلية.' },
+        { slug:'labs', icon:'labs', tag:'معامل وعيادات', name:'نظام المعامل والعيادات', headline:'رحلة المريض رقمية من الحجز إلى النتيجة.', desc:'اربط المواعيد والفحوصات والنتائج والفواتير في سجل واحد يعمل حتى دون إنترنت.', features:['ملف موحد لكل مريض','إدارة التحاليل والنتائج والفواتير','وصول آمن للتقارير من أي فرع'], outcome:'وقت انتظار أقل وبيانات طبية منظمة وأسهل في المتابعة.' },
+        { slug:'warehouse', icon:'warehouse', tag:'مخازن', name:'نظام إدارة المخازن', headline:'كل حركة مخزون واضحة، في كل مستودع.', desc:'حوّل الاستلام والصرف والتحويل والجرد إلى تدفق رقمي موحد ومتزامن مع السحابة.', features:['مخازن وفروع متعددة','جرد وحركات بصلاحيات كاملة','تنبيهات النقص وسجل تدقيق'], outcome:'فروقات أقل وقرارات شراء مبنية على بيانات حقيقية.' },
+        { slug:'attendance', icon:'attendance', tag:'موارد بشرية', name:'نظام الحضور والانصراف', headline:'إدارة حضور لا تتوقف بانقطاع الاتصال.', desc:'تسجيل محلي للحضور والانصراف وربطه آلياً بالورديات والإجازات والرواتب.', features:['ربط أجهزة البصمة والورديات','احتساب التأخير والغياب تلقائياً','تقارير مركزية لكل الفروع'], outcome:'وقت إداري أقل ورواتب أدق ومتابعة أوضح للموظفين.' },
+        { slug:'supermarket', icon:'supermarket', tag:'تجزئة', name:'نظام إدارة السوبر ماركت', headline:'متجرك يبيع دائماً، وبياناته تصل إليك أينما كنت.', desc:'نقطة بيع محلية سريعة تربط المبيعات والمخزون والعملاء وتزامنها سحابياً.', features:['بيع وطباعة فواتير دون إنترنت','مخزون وعروض وولاء في نظام واحد','متابعة المبيعات والفروع عن بُعد'], outcome:'طوابير أقصر وتحكم أفضل في النقد والمخزون.' },
+        { slug:'restaurant', icon:'restaurant', tag:'مطاعم وكافيهات', name:'نظام إدارة المطاعم والكاشير', headline:'مطعمك لا يتوقف عندما ينقطع الإنترنت.', desc:'نظام متكامل يجمع الكاشير والطاولات والنوادل وشاشة المطبخ KDS والمخزون والفروع. يواصل العمل على الشبكة المحلية، ويحفظ كل طلب، ثم يزامن البيانات تلقائياً عند عودة الاتصال.', features:['الكاشير والفواتير والطباعة دون إنترنت','شاشة مطبخ KDS متصلة مباشرة بالطلبات','إدارة الطاولات والنوادل وتقسيم الفاتورة','حالة الطلب: جديد، قيد التحضير، جاهز، تم التقديم','مؤقت تجهيز وأولوية وملاحظات ومحطات مطبخ','مخزون مكونات ووصفات وهدر وتنبيهات نقص'], details:[{title:'راقب مطعمك من أي مكان',text:'تابع مبيعات اليوم والطلبات والمصروفات والنقد وBankak والمخزون وأداء الفروع من لوحة واحدة.'},{title:'تحكم في النقد وقلّل التلاعب',text:'اعرف من أنشأ أو عدّل أو ألغى الطلب، ومن منح الخصم أو فتح درج النقدية، مع موافقات للعمليات الحساسة.'},{title:'إغلاق وردية بلا تخمين',text:'قارن النقد المتوقع بالفعلي، وسجّل المدفوعات والمردودات والخصومات والمصروفات في تقرير إغلاق واضح.'},{title:'اعرف تكلفة طبقك الحقيقية',text:'يخصم النظام مكونات الوصفة تلقائياً، ويتابع الهدر والتلف والفروقات غير المفسّرة وتغيّر أسعار الموردين.'},{title:'كل محطة ترى ما يخصها',text:'وجّه الطلبات إلى الشواية أو المشروبات أو الحلويات، مع الأولوية والملاحظات ووقت التجهيز لكل محطة.'},{title:'كل فروعك في صورة واحدة',text:'قارن المبيعات والمصروفات والطلبات والمخزون، ووحّد الأسعار والقائمة والصلاحيات بين الفروع.'}], outcome:'لا طلبات مفقودة، أخطاء أقل في المطبخ، وتحكم كامل للمالك في النقد والمخزون والفروع.' },
+        { slug:'school', icon:'school', tag:'مدارس', name:'نظام إدارة المدارس', headline:'مدرستك الرقمية في سجل واحد موثوق.', desc:'وحّد الطلاب والمعلمين والصفوف والدرجات والمدفوعات، مع عمل محلي ومزامنة سحابية.', features:['ملفات الطلاب والحضور والدرجات','الشهادات والرسوم والتقارير','صلاحيات واضحة للإدارة والمعلمين'], outcome:'إدارة أسرع وتواصل أفضل وبيانات تعليمية موحدة.' }
       ];
+      renderProductPage = function(slug){
+        var s = softwareSystems.find(function(item){ return item.slug === slug; });
+        var page = document.getElementById('productPage');
+        if (!s || !page) return;
+        document.title = s.name + ' | حلول التقنية';
+        var details = s.details ? '<section class="product-details reveal in-view"><div class="section-head"><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>تحكم أعمق</span><h2>كل ما تحتاجه لإدارة المطعم، في نظام واحد.</h2></div><div class="detail-grid">' + s.details.map(function(d){ return '<article><h3>' + d.title + '</h3><p>' + d.text + '</p></article>'; }).join('') + '</div></section>' : '';
+        page.innerHTML = '<section class="product-hero">' +
+          '<div class="product-copy"><a class="product-back" href="#services">→ جميع الأنظمة</a><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>' + s.tag + ' · تحول رقمي مستمر</span><h1>' + s.headline + '</h1><p>' + s.desc + '</p><div class="hero-actions"><a class="btn" href="#contact">اطلب عرضاً توضيحياً</a><a class="btn-ghost" href="#services">استكشف بقية الأنظمة <span aria-hidden="true">←</span></a></div></div>' +
+          '<aside class="continuity-card"><span class="live-dot"></span><strong>مصمم للاستمرارية</strong><div><b>دون إنترنت</b><span>يواصل العمل ويحفظ العمليات محلياً.</span></div><div><b>بعد عودة الاتصال</b><span>يزامن البيانات تلقائياً مع السحابة.</span></div><div><b>بعد انقطاع الكهرباء</b><span>يستعيد البيانات المحفوظة بأمان عند إعادة التشغيل.</span></div><small>تحتاج الأجهزة والشبكة المحلية إلى مصدر كهرباء أو UPS أثناء الانقطاع.</small></aside>' +
+          '</section><section class="product-features reveal in-view"><div class="section-head"><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>ما الذي يغيّره النظام؟</span><h2>من الكاشير إلى المطبخ، كل شيء مترابط.</h2></div><div class="feature-list">' + s.features.map(function(f, i){ return '<article><span>0' + (i + 1) + '</span><h3>' + f + '</h3></article>'; }).join('') + '</div></section>' + details +
+          '<section class="product-outcome reveal in-view"><span>النتيجة</span><h2>' + s.outcome + '</h2><a class="btn" href="#contact">ابدأ مع حلول</a></section>';
+      };
+      if (pendingProductSlug) renderProductPage(pendingProductSlug);
       var renderSoftwareCard = function(s){
         return '<article class="software-card' + (s.comingSoon ? ' coming-soon' : '') + '">' +
           '<div class="software-icon" style="color:var(--primary)">' + iconSvg(s.icon, 'var(--primary-soft)') + '</div>' +
           '<div class="status-row"><span class="tag">' + s.tag + '</span>' + (s.comingSoon ? '<span class="badge-soon">' + s.badge + '</span>' : '<span class="status-ready">✓ جاهز للتشغيل</span>') + '</div>' +
           '<h3>' + s.name + '</h3>' +
           '<p>' + s.desc + '</p>' +
-          '<div class="price-row"><span class="price-tag" dir="ltr">' + s.price + '</span>' + '</div>' +
+          '<a class="product-link" href="#' + s.slug + '">اكتشف النظام <span aria-hidden="true">←</span></a>' +
         '</article>'; };
       var softwareGrid = document.getElementById('softwareGrid');
       if (softwareGrid) {
