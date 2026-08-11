@@ -1,5 +1,8 @@
 (function(){
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var compactView = window.matchMedia('(max-width: 760px)').matches;
+      var saveData = !!(navigator.connection && navigator.connection.saveData);
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || compactView || saveData;
+      if (saveData) document.documentElement.classList.add('save-data');
       var header = document.getElementById('siteHeader');
       var setHeaderOffset = function(){  document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px'); };
       setHeaderOffset();
@@ -145,44 +148,44 @@
       } else {  metrics.forEach(animateCount);}
       /* ==================إضافة لوقو شركة=================== */
       var companies = [
-        { img: 'imgs/logos/BOK-logo.jpg',         name: 'بنك الخرطوم' },
-        { img: 'imgs/logos/elgwharacafelogo.jpg',      name: 'كافيه الجوهرة' },
-        { img: 'imgs/logos/goldencafelogo.jpg',         name: 'كافيه قولدن' },];
+        { img: 'imgs/logos/BOK-logo.webp',         name: 'بنك الخرطوم' },
+        { img: 'imgs/logos/elgwharacafelogo.webp',      name: 'كافيه الجوهرة' },
+        { img: 'imgs/logos/goldencafelogo.webp',         name: 'كافيه قولدن' },];
       var tracks = document.querySelectorAll('.marquee-track');
       if (tracks.length) {
         var buildLogoItems = function(hidden){
           return companies.map(function(c){
             return '<span class="logo-item"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
-              '<img class="logo-mark-img" src="' + c.img + '" alt="' + c.name + ' logo" loading="lazy">' +
-             '</span></span>';
+              '<img class="logo-mark-img" src="' + c.img + '" alt="' + c.name + ' logo" loading="lazy" decoding="async" fetchpriority="low">' +
+             '</span>';
           }).join('');  };
-        tracks.forEach(function(track){ track.innerHTML = buildLogoItems(false) + buildLogoItems(true); }); }
+        tracks.forEach(function(track){ track.innerHTML = buildLogoItems(false) + ((compactView || saveData) ? '' : buildLogoItems(true)); }); }
       /* =========إضافة مشروع======== */
           var projects = [
-        { img: 'imgs/projects/bahgaAgashi.jpg',         name: 'اقاشي البهجة',            category: 'مطعم' },
-        { img: 'imgs/projects/barbeRestaurant.jpg',     name: 'مطعم باربي',        category: 'مطعم' },
-        { img: 'imgs/projects/booshe.jpg',               name: 'بوتيك بوشي',                  category: 'بوتيك' },
-        { img: 'imgs/projects/elawalJuices.jpg',         name: 'عصائر الأول',          category: ' عصائر' },
-        { img: 'imgs/projects/eljwharaRest.jpg',         name: 'كافتيريا الجوهرة',   category: 'مطعم' },
-        { img: 'imgs/projects/generalElectric.jpg',      name: 'جينيرال اليكتريك',  category: 'تجزئة إلكترونيات' },
-        { img: 'imgs/projects/GFitnessClub.jpg',         name: 'جيم',          category: 'لياقة ونادي رياضي' },
-        { img: 'imgs/projects/goldenCafe&rest.jpg',      name: 'مطعم وكافيه قولدن',category: 'مقهى ومطعم' },
-        { img: 'imgs/projects/harbyTravelTourism.jpg',   name: 'وكالة سفر الحربي',  category: 'سفر وسياحة' },
-        { img: 'imgs/projects/karamElsham.jpg',          name: 'كرم الشام',           category: 'مطعم' },
-        { img: 'imgs/projects/lemonRest.jpg',            name: 'ليمون',        category: 'مطعم' },
-        { img: 'imgs/projects/megaStore.jpg',            name: 'ميجا ستور',              category: 'تجزئة' },
-        { img: 'imgs/projects/myIcecreem.jpg',           name: 'آيسكريمي',            category: 'حلويات وآيس كريم' },
-        { img: 'imgs/projects/pharmacySys.jpg',          name: 'نظام إدرة الصيدليات', category: 'صيدلية' },
-        { img: 'imgs/projects/quickBurger.jpg',          name: 'كويك بيرقر',            category: 'مطعم' },
-        { img: 'imgs/projects/redJewelcafe.jpg',         name: 'كافيه الجوهرة الحمراء',          category: 'مقهى' },
-        { img: 'imgs/projects/restaurantSys.jpg',        name: 'نظام إدرة المطاعم', category: 'مطعم' },
-        { img: 'imgs/projects/saifCenter.jpg',           name: 'سيف للأسماك',             category: 'مطعم' },
-        { img: 'imgs/projects/shahdElsham.jpg',          name: 'شهد الشام',           category: 'مطعم' },
-        { img: 'imgs/projects/supermarketSys.jpg',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' } ,   
-        { img: 'imgs/projects/salonsys.jpg',          name: 'نظام إدارة صالونات الحلاقة', category: 'حلاقة' },
-        { img: 'imgs/projects/restaurantSystem.jpg',          name: 'نظام الكاشير', category: 'مطعم' },
-        { img: 'imgs/projects/carsmangmentsys.jpg',          name: 'نظام إدارة معارض السيارات', category: 'معارض' },
-        { img: 'imgs/projects/goldsys.jpg',          name: 'نظام إدارة محلات الذهب والمجوهرات', category: 'محلات' },
+        { img: 'imgs/projects/bahgaAgashi.webp',         name: 'اقاشي البهجة',            category: 'مطعم' },
+        { img: 'imgs/projects/barbeRestaurant.webp',     name: 'مطعم باربي',        category: 'مطعم' },
+        { img: 'imgs/projects/booshe.webp',               name: 'بوتيك بوشي',                  category: 'بوتيك' },
+        { img: 'imgs/projects/elawalJuices.webp',         name: 'عصائر الأول',          category: ' عصائر' },
+        { img: 'imgs/projects/eljwharaRest.webp',         name: 'كافتيريا الجوهرة',   category: 'مطعم' },
+        { img: 'imgs/projects/generalElectric.webp',      name: 'جينيرال اليكتريك',  category: 'تجزئة إلكترونيات' },
+        { img: 'imgs/projects/GFitnessClub.webp',         name: 'جيم',          category: 'لياقة ونادي رياضي' },
+        { img: 'imgs/projects/goldenCafe&rest.webp',      name: 'مطعم وكافيه قولدن',category: 'مقهى ومطعم' },
+        { img: 'imgs/projects/harbyTravelTourism.webp',   name: 'وكالة سفر الحربي',  category: 'سفر وسياحة' },
+        { img: 'imgs/projects/karamElsham.webp',          name: 'كرم الشام',           category: 'مطعم' },
+        { img: 'imgs/projects/lemonRest.webp',            name: 'ليمون',        category: 'مطعم' },
+        { img: 'imgs/projects/megaStore.webp',            name: 'ميجا ستور',              category: 'تجزئة' },
+        { img: 'imgs/projects/myIcecreem.webp',           name: 'آيسكريمي',            category: 'حلويات وآيس كريم' },
+        { img: 'imgs/projects/pharmacySys.webp',          name: 'نظام إدرة الصيدليات', category: 'صيدلية' },
+        { img: 'imgs/projects/quickBurger.webp',          name: 'كويك بيرقر',            category: 'مطعم' },
+        { img: 'imgs/projects/redJewelcafe.webp',         name: 'كافيه الجوهرة الحمراء',          category: 'مقهى' },
+        { img: 'imgs/projects/restaurantSys.webp',        name: 'نظام إدرة المطاعم', category: 'مطعم' },
+        { img: 'imgs/projects/saifCenter.webp',           name: 'سيف للأسماك',             category: 'مطعم' },
+        { img: 'imgs/projects/shahdElsham.webp',          name: 'شهد الشام',           category: 'مطعم' },
+        { img: 'imgs/projects/supermarketSys.webp',       name: 'نظام ادارة السوبرماركت', category: 'تجزئة' },
+        { img: 'imgs/projects/salonsys.webp',          name: 'نظام إدارة صالونات الحلاقة', category: 'حلاقة' },
+        { img: 'imgs/projects/restaurantSystem.webp',          name: 'نظام الكاشير', category: 'مطعم' },
+        { img: 'imgs/projects/carsmangmentsys.webp',          name: 'نظام إدارة معارض السيارات', category: 'معارض' },
+        { img: 'imgs/projects/goldsys.webp',          name: 'نظام إدارة محلات الذهب والمجوهرات', category: 'محلات' },
       ];
       var overlay = document.getElementById('lightboxOverlay');
       var overlayImg = document.getElementById('lightboxImg');
@@ -204,10 +207,11 @@
       var setupGallery = function(galleryId, prevId, nextId, dotsId){
         var gallery = document.getElementById(galleryId);
         if (!gallery) return;
-        gallery.innerHTML = projects.map(function(p){
+        var visibleProjects = (compactView || saveData) ? projects.slice(0, 12) : projects;
+        gallery.innerHTML = visibleProjects.map(function(p){
           return '<article class="gallery-card">' +
             '<div class="gallery-media">' +
-              '<img class="gallery-img" src="' + p.img + '" alt="' + p.name + '" loading="lazy" ' +
+              '<img class="gallery-img" src="' + p.img + '" alt="' + p.name + '" loading="lazy" decoding="async" fetchpriority="low" ' +
                 'data-full="' + p.img + '" data-name="' + p.name + '" data-category="' + p.category + '">' +
               '<span class="gallery-chip">' + p.category + '</span>' +
             '</div>' +
@@ -314,7 +318,7 @@
           '<div class="status-row"><span class="tag">' + s.tag + '</span>' + (s.comingSoon ? '<span class="badge-soon">' + s.badge + '</span>' : '<span class="status-ready">✓ جاهز للتشغيل</span>') + '</div>' +
           '<h3>' + s.name + '</h3>' +
           '<p>' + s.desc + '</p>' +
-          '<a class="product-link" href="#' + s.slug + '">اكتشف النظام <span aria-hidden="true">←</span></a>' +
+          '<a class="product-link" href="software/' + s.slug + '/">اكتشف النظام <span aria-hidden="true">←</span></a>' +
         '</article>'; };
       var softwareGrid = document.getElementById('softwareGrid');
       if (softwareGrid) {
@@ -342,22 +346,22 @@
       /* ==================الأجهزة والمعدات================== */
       var hardwareItems = [
         { icon:'printer', img:'imgs/hardware/printer.webp', name:'طابعة فواتير X-Printer', price:'48$' },
-        { icon:'posAllInOne', img:'imgs/hardware/pos-all-in-one.jpg', name:'جهاز كاشير All-in-One', price:'' },
-        { icon:'touchscreen', img:'imgs/hardware/touchscreen-dell.jpg', name:'شاشة لمس Dell', price:'360$' },
-        { icon:'touchscreen', img:'imgs/hardware/touchscreen-nigachi.jpg', name:'شاشة لمس Nigachi', price:'' },
-        { icon:'printer', img:'imgs/hardware/printer-nigachi.jpg', name:'طابعة فواتير حرارية Nigachi', price:'' },
-        { icon:'labelPrinter', img:'imgs/hardware/barcode-printer-nigachi.jpg', name:'طابعة باركود Nigachi', price:'' },
-        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wired.jpg', name:'قارئ باركود سلكي', price:'' },
-        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wireless.jpg', name:'قارئ باركود لاسلكي', price:'' },
-        { icon:'scanner', img:'imgs/hardware/2d-presentation-scanner.jpg', name:'سكانر 2D Presentation', price:'' },
-        { icon:'drawer', img:'imgs/hardware/cash-drawer.jpg', name:'درج نقدي إلكتروني', price:'' },
-        { icon:'computer', img:'imgs/hardware/computer.jpg', name:'جهاز كمبيوتر Dell ,HP , Lenovo', price:'' },
-        { icon:'fingerprint', img:'imgs/hardware/fingerprint-attendance.jpg', name:'جهاز بصمة الحضور والانصراف', price:'' },
+        { icon:'posAllInOne', img:'imgs/hardware/pos-all-in-one.webp', name:'جهاز كاشير All-in-One', price:'' },
+        { icon:'touchscreen', img:'imgs/hardware/touchscreen-dell.webp', name:'شاشة لمس Dell', price:'360$' },
+        { icon:'touchscreen', img:'imgs/hardware/touchscreen-nigachi.webp', name:'شاشة لمس Nigachi', price:'' },
+        { icon:'printer', img:'imgs/hardware/printer-nigachi.webp', name:'طابعة فواتير حرارية Nigachi', price:'' },
+        { icon:'labelPrinter', img:'imgs/hardware/barcode-printer-nigachi.webp', name:'طابعة باركود Nigachi', price:'' },
+        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wired.webp', name:'قارئ باركود سلكي', price:'' },
+        { icon:'scanner', img:'imgs/hardware/barcode-scanner-wireless.webp', name:'قارئ باركود لاسلكي', price:'' },
+        { icon:'scanner', img:'imgs/hardware/2d-presentation-scanner.webp', name:'سكانر 2D Presentation', price:'' },
+        { icon:'drawer', img:'imgs/hardware/cash-drawer.webp', name:'درج نقدي إلكتروني', price:'' },
+        { icon:'computer', img:'imgs/hardware/computer.webp', name:'جهاز كمبيوتر Dell ,HP , Lenovo', price:'' },
+        { icon:'fingerprint', img:'imgs/hardware/fingerprint-attendance.webp', name:'جهاز بصمة الحضور والانصراف', price:'' },
       ];
       var hardwareGrid = document.getElementById('hardwareGrid');
       var renderHardwareCard = function(h){
         var media = h.img
-            ? '<div class="hardware-media"><img src="' + h.img + '" alt="' + h.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;hardware-icon&quot; style=&quot;color:var(--primary)&quot;>' + iconSvgPlain(h.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
+            ? '<div class="hardware-media"><img src="' + h.img + '" alt="' + h.name + '" loading="lazy" decoding="async" fetchpriority="low" onerror="this.parentElement.outerHTML=\'<div class=&quot;hardware-icon&quot; style=&quot;color:var(--primary)&quot;>' + iconSvgPlain(h.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
             : '<div class="hardware-icon" style="color:var(--primary)">' + iconSvgPlain(h.icon) + '</div>';
           return '<article class="hardware-card">' +
             media +
@@ -372,14 +376,14 @@
         { icon:'visaCard', name:'فيزا كارد' },
         { icon:'mastercardCard', name:'ماستر كارد' },
         { icon:'bankTransfer', name:'حساب بنكي دولي' },
-        { icon:'bankak', img:'imgs/logos/bankak.png', name:'بنكك' },
-        { icon:'fawry', img:'imgs/logos/fawry.png', name:'فوري' },
-        { icon:'ocash', img:'imgs/logos/O-Cash.jpg', name:'أوكاش' }
+        { icon:'bankak', img:'imgs/logos/bankak.webp', name:'بنكك' },
+        { icon:'fawry', img:'imgs/logos/fawry.webp', name:'فوري' },
+        { icon:'ocash', img:'imgs/logos/O-Cash.webp', name:'أوكاش' }
       ];
       var paymentGrid = document.getElementById('paymentGrid');
       var renderPaymentCard = function(p){
         var media = p.img
-            ? '<div class="payment-icon payment-logo"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="this.parentElement.outerHTML=\'<div class=&quot;payment-icon&quot;>' + iconSvgPlain(p.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
+            ? '<div class="payment-icon payment-logo"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy" decoding="async" fetchpriority="low" onerror="this.parentElement.outerHTML=\'<div class=&quot;payment-icon&quot;>' + iconSvgPlain(p.icon).replace(/'/g, "&#39;").replace(/"/g, '&quot;') + '</div>\'"></div>'
             : '<div class="payment-icon">' + iconSvgPlain(p.icon) + '</div>';
           return '<div class="payment-card">' + media + '<span>' + p.name + '</span></div>'; };
       if (paymentGrid) { paymentGrid.innerHTML = paymentMethods.map(renderPaymentCard).join(''); }
