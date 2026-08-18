@@ -150,7 +150,11 @@
       var companies = [
         { img: 'imgs/logos/BOK-logo.webp',         name: 'بنك الخرطوم' },
         { img: 'imgs/logos/elgwharacafelogo.webp',      name: 'كافيه الجوهرة' },
-        { img: 'imgs/logos/goldencafelogo.webp',         name: 'كافيه قولدن' },];
+        { img: 'imgs/logos/goldencafelogo.webp',         name: 'كافيه قولدن' },
+        { img: 'imgs/logos/bankak.webp',                 name: 'بنكك' },
+        { img: 'imgs/logos/fawry.webp',                  name: 'فوري' },
+        { img: 'imgs/logos/O-Cash.webp',                 name: 'أو كاش' }
+      ];
       var tracks = document.querySelectorAll('.marquee-track');
       if (tracks.length) {
         var buildLogoItems = function(hidden){
