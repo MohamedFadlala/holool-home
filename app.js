@@ -149,11 +149,12 @@
       /* ==================إضافة لوقو شركة=================== */
       var companies = [
         { img: 'imgs/logos/BOK-logo.webp',         name: 'بنك الخرطوم' },
-        { img: 'imgs/logos/elgwharacafelogo.webp',      name: 'كافيه الجوهرة' },
-        { img: 'imgs/logos/goldencafelogo.webp',         name: 'كافيه قولدن' },
-        { img: 'imgs/logos/bankak.webp',                 name: 'بنكك' },
-        { img: 'imgs/logos/fawry.webp',                  name: 'فوري' },
-        { img: 'imgs/logos/O-Cash.webp',                 name: 'أو كاش' }
+        { img: 'imgs/logos/goldencafelogo.webp',   name: 'كافيه قولدن' },
+        { img: 'imgs/logos/bankak.webp',            name: 'بنكك' },
+        { img: 'imgs/logos/karam-alsham.png',      name: 'كرم الشام' },
+        { img: 'imgs/logos/modawarah.jpg',          name: 'مدوّرة' },
+        { img: 'imgs/logos/aldaar.jpg',             name: 'الدار' },
+        { img: 'imgs/logos/barby.jpg',              name: 'باربي' }
       ];
       var tracks = document.querySelectorAll('.marquee-track');
       if (tracks.length) {
