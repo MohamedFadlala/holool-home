@@ -155,7 +155,8 @@
         { img: 'imgs/logos/modawarah.jpg',          name: 'مدوّرة' },
         { img: 'imgs/logos/aldaar.jpg',             name: 'الدار' },
         { img: 'imgs/logos/barby.jpg',              name: 'باربي' },
-        { img: 'imgs/logos/lacasa.jpeg',            name: 'لاكاسا' }
+        { img: 'imgs/logos/lacasa.jpeg',            name: 'لاكاسا' },
+        { img: 'imgs/logos/megastore.jpg',          name: 'ميغاستور' }
       ];
       var tracks = document.querySelectorAll('.marquee-track');
       if (tracks.length) {
