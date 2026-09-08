@@ -3,6 +3,7 @@
 
   var products = {
     pharmacy: {
+      url: 'https://pms.holoolsoftware.com/',
       tag: 'صيدليات', name: 'نظام إدارة الصيدليات',
       headline: 'صيدليتك مترابطة، من الرف إلى القرار.',
       desc: 'رقمنة المبيعات والمخزون والصلاحيات والتقارير، مع تشغيل محلي ومزامنة سحابية تلقائية.',
@@ -38,6 +39,7 @@
       outcome: 'طوابير أقصر وتحكم أفضل في النقد والمخزون.'
     },
     restaurant: {
+      url: 'https://kds.holoolsoftware.com/',
       tag: 'مطاعم وكافيهات', name: 'نظام إدارة المطاعم والكاشير',
       headline: 'مطعمك لا يتوقف عندما ينقطع الإنترنت.',
       desc: 'نظام متكامل يجمع الكاشير والطاولات والنوادل وشاشة المطبخ KDS والمخزون والفروع. يواصل العمل على الشبكة المحلية، ويحفظ كل طلب، ثم يزامن البيانات تلقائياً عند عودة الاتصال.',
@@ -72,7 +74,7 @@
   }).join('') + '</div></section>' : '';
 
   root.innerHTML = '<section class="product-hero">' +
-    '<div class="product-copy"><a class="product-back" href="../../#services">→ جميع الأنظمة</a><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>' + product.tag + ' · تحول رقمي مستمر</span><h1>' + product.headline + '</h1><p>' + product.desc + '</p><div class="hero-actions"><a class="btn" href="https://wa.me/249124376591?text=' + whatsappText + '" target="_blank" rel="noopener">اطلب عرضاً توضيحياً</a><a class="btn-ghost" href="../../#services">استكشف بقية الأنظمة <span aria-hidden="true">←</span></a></div></div>' +
+    '<div class="product-copy"><a class="product-back" href="../../#services">→ جميع الأنظمة</a><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>' + product.tag + ' · تحول رقمي مستمر</span><h1>' + product.headline + '</h1><p>' + product.desc + '</p><div class="hero-actions">' + (product.url ? '<a class="btn" href="' + product.url + '">افتح صفحة النظام</a>' : '<a class="btn" href="https://wa.me/249124376591?text=' + whatsappText + '" target="_blank" rel="noopener">اطلب عرضاً توضيحياً</a>') + '<a class="btn-ghost" href="../../#services">استكشف بقية الأنظمة <span aria-hidden="true">←</span></a></div></div>' +
     '<aside class="continuity-card"><span class="live-dot"></span><strong>مصمم للاستمرارية</strong><div><b>دون إنترنت</b><span>يواصل العمل ويحفظ العمليات محلياً.</span></div><div><b>بعد عودة الاتصال</b><span>يزامن البيانات تلقائياً مع السحابة.</span></div><div><b>بعد انقطاع الكهرباء</b><span>يستعيد البيانات المحفوظة بأمان عند إعادة التشغيل.</span></div><small>تحتاج الأجهزة والشبكة المحلية إلى مصدر كهرباء أو UPS أثناء الانقطاع.</small></aside>' +
     '</section><section class="product-features"><div class="section-head"><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>ما الذي يغيّره النظام؟</span><h2>رقمنة عملية. أثر واضح.</h2></div><div class="feature-list">' + product.features.map(function (feature, index) {
       return '<article><span>0' + (index + 1) + '</span><h3>' + feature + '</h3></article>';
