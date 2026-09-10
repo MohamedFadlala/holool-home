@@ -1,0 +1,53 @@
+/* The reference composition, with real, selectable text and controls. */
+.about-placeholder{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 20px 80px}
+.about-placeholder h1{font-size:clamp(36px,6vw,64px);color:#03142f;margin:16px 0}
+.about-placeholder p{font-size:18px;line-height:1.7;color:#6d84ac;margin:0 0 28px}
+.about-placeholder .btn{border-radius:100px;padding:14px 28px;background:#007cff}
+body{background:#fbfcfe}
+#siteHeader{position:relative;direction:ltr;max-width:1100px;margin:0 auto;padding:38px 64px 24px;background:transparent;border-radius:0;backdrop-filter:none;box-shadow:none}
+#siteHeader .brand{gap:14px;color:#03142f}
+#siteHeader .brand img{width:100px;height:100px;object-fit:contain}
+.brand-wordmark{display:flex;flex-direction:column;font:700 54px/1 Arial,sans-serif;letter-spacing:-2px}
+.brand-wordmark small{margin-top:9px;font:400 16px/1 Arial,sans-serif;letter-spacing:9px;color:#254579}
+#navToggle{display:flex;width:52px;height:52px;gap:8px;padding:7px}
+#navToggle span{width:38px;height:4px;border-radius:4px;background:#092451}
+#navToggle.open span:nth-child(1){transform:translateY(12px) rotate(45deg)}
+#navToggle.open span:nth-child(3){transform:translateY(-12px) rotate(-45deg)}
+#siteNav{display:none;position:absolute;top:125px;right:60px;left:auto;width:240px;padding:24px;background:white;border:1px solid #e4ebf5;border-radius:18px;box-shadow:0 18px 50px #0a27521a;direction:rtl;z-index:60}
+#siteNav.open{display:flex;flex-direction:column;align-items:stretch;gap:18px}
+main{max-width:1100px;padding:0;margin:auto}
+.progress-home{direction:ltr;text-align:left;color:#02132d;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
+.progress-heading{position:relative;padding:44px 8.8% 0;z-index:2}
+.progress-heading h1{margin:0;font:800 clamp(48px,8.8vw,98px)/.98 Arial,Helvetica,sans-serif;letter-spacing:-5px}
+.progress-heading h1 span{display:block;color:#007cff;white-space:nowrap}
+.progress-heading p{font-size:clamp(20px,3.2vw,34px);line-height:1.3;color:#6d84ac;margin:22px 0 0;letter-spacing:-.5px}
+.progress-kicker{position:absolute;right:8.5%;top:0;font-size:22px;line-height:1.22;letter-spacing:1px;color:#7890ba}
+.progress-kicker::after{content:"";display:block;width:45px;height:3px;background:#0085ff;margin-top:20px;border-radius:3px}
+.progress-scene{position:relative;width:100%;aspect-ratio:941/640;overflow:hidden;margin-top:10px;mask-image:linear-gradient(transparent,#000 7%,#000 84%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 7%,#000 84%,transparent)}
+.progress-scene img{display:block;position:absolute;width:100%;max-width:none;height:auto;top:0;left:0;transform:translateY(-29.3%)}
+.progress-action{position:relative;display:flex;justify-content:center;margin:-9px 0 44px;z-index:2}
+.progress-cta{display:inline-flex;align-items:center;justify-content:center;gap:26px;padding:26px 68px;background:linear-gradient(110deg,#008bff,#007cff);border-radius:100px;color:white;font-size:30px;font-weight:600;text-decoration:none;box-shadow:0 15px 32px #0085ff24;transition:background .2s,transform .2s}
+.progress-cta:hover{background:#0068dc;transform:translateY(-3px)}
+.progress-cta svg{width:26px;height:26px}
+.progress-benefits{display:grid;grid-template-columns:repeat(4,1fr);margin:0 5% 58px;padding:0;list-style:none}
+.progress-benefits li{position:relative;text-align:center;font-size:23px;line-height:1.15;color:#072454}
+.progress-benefits li+li::before{content:"";position:absolute;left:0;top:24px;height:125px;width:1px;background:#d9e7fc}
+.benefit-icon{display:flex;align-items:center;justify-content:center;width:104px;height:104px;border-radius:50%;background:#e0edff;color:#0082ff;margin:0 auto 12px}
+.benefit-icon svg{width:57px;height:57px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.progress-promise{position:relative;isolation:isolate;min-height:235px;padding:80px 12% 64px;background:linear-gradient(105deg,#061b37,#143660);color:#b0cdf7;border-radius:7% 7% 0 0;overflow:hidden}
+.progress-promise::before{content:"";position:absolute;top:-37px;left:5%;width:90%;height:60px;background:#fbfcfe;border-radius:0 0 50% 50%;z-index:-1}
+.progress-promise p{position:relative;padding-left:60px;margin:18px 0;font-size:20px;line-height:1.65;letter-spacing:5px}
+.progress-promise p::before{content:"";position:absolute;left:0;top:5px;width:5px;height:55px;background:#008cff;border-radius:4px}
+
+.progress-promise::after{content:"";position:absolute;right:9%;bottom:42px;width:44px;height:4px;background:#008cff;border-radius:3px}
+.page[data-page="home"]>.reveal,.page[data-page="home"]>.projects{margin-top:40px}
+.page:not([data-page="home"]){padding:24px 16px}
+@media(min-width:1100px){.progress-heading{padding-top:65px}.progress-heading h1{font-size:98px}.progress-kicker{top:10px}.progress-scene{margin-top:12px}}
+@media(max-width:600px){
+ #siteHeader{padding:22px 6% 18px}#siteHeader .brand{gap:6px}#siteHeader .brand img{width:56px;height:56px}.brand-wordmark{font-size:32px;letter-spacing:-1px}.brand-wordmark small{font-size:9px;letter-spacing:5.3px;margin-top:6px}
+ #navToggle{width:38px;height:38px;gap:5px;padding:5px}#navToggle span{width:28px;height:3px}#navToggle.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}#navToggle.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}#siteNav{top:85px;right:6%}
+ .progress-heading{padding:40px 8.8% 0}.progress-heading h1{font-size:clamp(34px,9.1vw,55px);letter-spacing:-2px}.progress-heading p{font-size:clamp(16px,3.25vw,20px);margin-top:14px}.progress-kicker{top:0;right:9%;font-size:11px;letter-spacing:.4px}.progress-kicker::after{width:23px;height:2px;margin-top:8px}
+ .progress-scene{margin-top:6px}.progress-action{margin:-3px 0 22px}.progress-cta{font-size:16px;gap:16px;padding:16px 32px}.progress-cta svg{width:18px;height:18px}
+ .progress-benefits{margin:0 4% 28px}.progress-benefits li{font-size:14px}.benefit-icon{width:60px;height:60px;margin-bottom:8px}.benefit-icon svg{width:34px;height:34px}.progress-benefits li+li::before{top:13px;height:74px}
+ .progress-promise{min-height:135px;padding:37px 11% 28px}.progress-promise p{font-size:10px;letter-spacing:2.5px;padding-left:29px;line-height:1.8}.progress-promise p::before{width:3px;height:30px;top:2px}.progress-promise::after{height:2px;width:23px;bottom:24px}.progress-promise::before{top:-44px}
+}

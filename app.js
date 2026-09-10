@@ -27,7 +27,7 @@
         var top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 12;
         window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' }); };
       var pages = document.querySelectorAll('.page');
-      var pageNames = ['home', 'services', 'product'];
+      var pageNames = ['home', 'services', 'about-us', 'product'];
       var productSlugs = ['pharmacy', 'labs', 'warehouse', 'attendance', 'supermarket', 'restaurant', 'school'];
       var renderProductPage;
       var pendingProductSlug = null;
@@ -52,6 +52,7 @@
         if (activePage) revealInPage(activePage);
         if (name === 'home') document.title = 'حلول التقنية | التحول الرقمي للأعمال';
         if (name === 'services') document.title = 'أنظمة حلول التقنية | تحول رقمي مستمر';
+        if (name === 'about-us') document.title = 'من نحن | حلول التقنية';
         updateNavLinks(name);
         return true; };
       var openProduct = function(slug){
