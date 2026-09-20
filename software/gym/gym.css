@@ -1,0 +1,64 @@
+.gym-product{--gym-navy:#071a33;--gym-blue:#1167ff;--gym-cyan:#35d4ff;--gym-mint:#74efc1;background:#f4f8fc}
+.gym-product .product-page{max-width:1240px}
+.gym-hero{align-items:stretch;min-height:680px;padding-top:clamp(48px,7vw,92px)}
+.gym-hero .product-copy{align-self:center}
+.gym-hero .product-copy h1{max-width:700px;font-size:clamp(43px,5.8vw,76px);line-height:1.08;letter-spacing:-.045em}
+.gym-hero .product-copy>p{max-width:700px}
+.trial-callout{display:flex;align-items:center;gap:14px;width:fit-content;max-width:100%;margin:24px 0;padding:10px 12px 10px 18px;border:1px solid #a7ddc9;border-radius:999px;background:#e9fbf4;color:#174b39}
+.trial-callout strong{flex:0 0 auto;padding:8px 14px;border-radius:999px;background:#1167ff;color:#fff;font-size:15px}
+.trial-callout span{font-size:14px;line-height:1.5}
+.download-status{margin:15px 0 3px!important;color:#4c5b70!important;font-size:14px!important}
+.release-fallback{display:inline-block;color:#1e57b9;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.gym-download[aria-busy="true"]{opacity:.72;cursor:wait}
+.gym-hero-card{position:relative;align-self:center;overflow:hidden;min-height:510px;padding:30px;border:1px solid #ffffff22;border-radius:30px;background:radial-gradient(circle at 15% 10%,#1679ff55,transparent 30%),linear-gradient(145deg,#071a33,#0b2d57 58%,#063a55);box-shadow:0 32px 70px #071a3340;color:#fff}
+.gym-hero-card::after{content:"";position:absolute;inset:auto -80px -100px auto;width:280px;height:280px;border:1px solid #35d4ff55;border-radius:50%;box-shadow:0 0 0 38px #35d4ff0c,0 0 0 76px #35d4ff0a}
+.gym-card-head{position:relative;z-index:1;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:13px;padding-bottom:26px;border-bottom:1px solid #ffffff21;direction:ltr;text-align:left}
+.gym-card-head img{border-radius:15px;background:#fff;padding:5px}
+.gym-card-head div{display:flex;flex-direction:column}
+.gym-card-head span{color:#8db8ef;font-size:11px;font-weight:800;letter-spacing:.16em}
+.gym-card-head strong{font-size:18px;letter-spacing:.06em}
+.gym-card-head em{padding:7px 10px;border:1px solid #72dfff55;border-radius:999px;color:#8feaff;font-size:12px;font-style:normal}
+.gym-card-metric{position:relative;z-index:1;padding:34px 0 24px}
+.gym-card-metric span,.gym-card-metric small{display:block;color:#9cb1ca;font-size:13px}
+.gym-card-metric strong{display:block;margin:8px 0;font-size:27px;line-height:1.25}
+.gym-card-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gym-card-grid div{min-height:92px;padding:15px;border:1px solid #ffffff18;border-radius:15px;background:#ffffff0c}
+.gym-card-grid b,.gym-card-grid span{display:block}
+.gym-card-grid b{margin-bottom:8px;color:#fff;font-size:14px}
+.gym-card-grid span{color:#9fb3cb;font-size:12px;line-height:1.5}
+.gym-hero-card>p{position:relative;z-index:1;display:flex;align-items:center;gap:9px;margin:24px 0 0;color:#bad0e9;font-size:12px}
+.gym-hero-card .live-dot{position:static;flex:0 0 auto;background:#74efc1;box-shadow:0 0 0 5px #74efc11a}
+.gym-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:4px 0 82px;border:1px solid #dce5f0;border-radius:22px;background:#fff;box-shadow:0 16px 36px #0d2b4b0c}
+.gym-benefits article{padding:24px 26px}
+.gym-benefits article+article{border-right:1px solid #e2e9f2}
+.gym-benefits strong,.gym-benefits span{display:block}
+.gym-benefits strong{margin-bottom:8px;color:#071a33;font-size:18px}
+.gym-benefits span{color:#617187;font-size:14px;line-height:1.65}
+.gym-product .product-details{padding-top:36px;padding-bottom:70px}
+.gym-product .section-head{max-width:760px}
+.gym-product .section-head p{max-width:680px;color:#69788b;line-height:1.75}
+.gym-feature-grid{grid-template-columns:repeat(3,1fr)}
+.gym-feature-grid article{position:relative;overflow:hidden;min-height:230px;padding:28px;background:#fff}
+.gym-feature-grid article::after{content:"";position:absolute;top:0;right:0;width:74px;height:3px;background:linear-gradient(90deg,#35d4ff,#1167ff)}
+.feature-number{display:block;margin-bottom:28px;color:#1167ff;font-family:Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em}
+.gym-feature-grid h3{font-size:19px}
+.gym-feature-grid p{font-size:14px;line-height:1.8}
+.gym-dark-section{margin:30px calc(50% - 50vw);padding-right:max(24px,calc((100vw - 1240px)/2));padding-left:max(24px,calc((100vw - 1240px)/2));background:#071a33;color:#fff}
+.gym-dark-section .section-head h2{color:#fff}
+.gym-dark-section .section-head p{color:#aebed1}
+.gym-dark-section .eyebrow{color:#74dfff}
+.gym-dark-section .gym-feature-grid article{border-color:#ffffff1c;background:#0d2848;color:#fff;box-shadow:none}
+.gym-dark-section .gym-feature-grid h3{color:#fff}
+.gym-dark-section .gym-feature-grid p{color:#b4c3d4}
+.license-section{display:grid;grid-template-columns:1.3fr .7fr;gap:38px;align-items:center;margin:42px 0;padding:46px;border:1px solid #cfe0f2;border-radius:28px;background:linear-gradient(135deg,#edf6ff,#f5fffb)}
+.license-section>div>span{color:#1167ff;font-size:13px;font-weight:800}
+.license-section h2{margin:10px 0 14px;color:#071a33;font-size:clamp(28px,3.4vw,44px);line-height:1.25}
+.license-section p{margin:0;color:#5c6c80;line-height:1.75}
+.license-contact{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px;border-radius:18px;background:#fff;box-shadow:0 14px 30px #0d2b4b12}
+.license-contact small{color:#66758a}
+.license-contact>a:not(.btn){color:#071a33;font-family:Arial,sans-serif;font-size:26px;font-weight:800;text-decoration:none}
+.license-contact .btn{width:100%;margin-top:4px;text-align:center}
+.gym-final-cta{background:linear-gradient(135deg,#0c2e59,#1167ff)}
+.gym-final-cta button{border:0}
+@media(max-width:900px){.gym-feature-grid{grid-template-columns:1fr 1fr}.license-section{grid-template-columns:1fr}.gym-benefits{grid-template-columns:1fr}.gym-benefits article+article{border-top:1px solid #e2e9f2;border-right:0}}
+@media(max-width:760px){.gym-hero{padding-top:28px}.gym-hero .product-copy h1{font-size:42px}.trial-callout{align-items:flex-start;border-radius:20px}.gym-hero-card{min-height:auto;padding:22px;border-radius:22px}.gym-card-head{grid-template-columns:46px 1fr}.gym-card-head img{width:46px;height:46px}.gym-card-head em{display:none}.gym-card-grid{grid-template-columns:1fr}.gym-card-grid div{min-height:auto}.gym-benefits{margin-bottom:46px}.gym-feature-grid{display:grid;grid-template-columns:1fr;overflow:visible}.gym-feature-grid article{min-height:auto}.gym-dark-section{padding-top:42px;padding-bottom:42px}.license-section{padding:26px}.license-contact>a:not(.btn){font-size:23px}}
