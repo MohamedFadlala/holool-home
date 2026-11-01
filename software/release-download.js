@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   var patterns = {
+    'hms-releases': /^Holool-HMS-.*-Setup\.exe$/i,
     'pos-releases': /^Holool-POS-.*-Setup\.exe$/i,
     'tms-releases': /^TMS-.*-Setup\.exe$/i
   };
