@@ -19,40 +19,4 @@
     toggle.setAttribute('aria-expanded', String(open));
   });
 
-  var button = document.getElementById('downloadTms');
-  var status = document.getElementById('downloadStatus');
-  button.disabled = false;
-  button.addEventListener('click', async function () {
-    button.disabled = true;
-    button.setAttribute('aria-busy', 'true');
-    status.textContent = 'جارٍ البحث عن أحدث إصدار…';
-    var controller = new AbortController();
-    var timeout = setTimeout(function () { controller.abort(); }, 15000);
-    try {
-      // Resolve on each click: release asset filenames contain the version number.
-      var response = await fetch('https://api.github.com/repos/MohamedFadlala/tms-releases/releases/latest', {
-        headers: { Accept: 'application/vnd.github+json' },
-        cache: 'no-store',
-        signal: controller.signal
-      });
-      if (!response.ok) throw new Error('Release lookup failed');
-      var release = await response.json();
-      var installer = (release.assets || []).find(function (asset) {
-        return /^TMS-.*-Setup\.exe$/i.test(asset.name) && asset.state === 'uploaded';
-      });
-      if (!installer) throw new Error('Windows installer unavailable');
-      var url = new URL(installer.browser_download_url);
-      if (url.origin !== 'https://github.com' || !url.pathname.startsWith('/MohamedFadlala/tms-releases/releases/download/') || !url.pathname.toLowerCase().endsWith('.exe')) {
-        throw new Error('Invalid installer URL');
-      }
-      status.textContent = 'جارٍ بدء تنزيل أحدث إصدار: ' + release.tag_name + '. إذا لم يبدأ التنزيل، اضغط الزر للمحاولة مجدداً.';
-      window.location.assign(url.href);
-    } catch (error) {
-      status.textContent = 'تعذّر جلب أحدث إصدار. تحقق من اتصال الإنترنت وحاول مجدداً بعد قليل، أو تواصل معنا للمساعدة.';
-    } finally {
-      clearTimeout(timeout);
-      button.disabled = false;
-      button.removeAttribute('aria-busy');
-    }
-  });
 })();

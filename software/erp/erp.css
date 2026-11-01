@@ -1,0 +1,12 @@
+.erp-page{direction:ltr;text-align:left}
+.erp-page .erp-name{color:var(--primary);font-size:16px;font-weight:700;margin:16px 0}
+.erp-page .product-copy h1{font-size:clamp(32px,4.5vw,52px);line-height:1.12;letter-spacing:-.025em}
+.erp-page .product-copy>p{max-width:65ch}
+.erp-page #downloadStatus{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px}
+.erp-release-link{color:var(--primary);font-size:14px;text-underline-offset:3px}
+.erp-page .section-head p,.erp-local p{max-width:75ch;color:var(--muted);font-size:17px;line-height:1.8}
+.erp-local{padding:32px 0}
+.erp-page .btn[aria-busy="true"]{opacity:.7;cursor:wait}
+.erp-page #features{scroll-margin-top:calc(var(--header-h) + 24px)}
+.erp-page #downloadErp{scroll-margin-top:calc(var(--header-h) + 24px)}
+@media(max-width:760px){.erp-page .hero-actions{align-items:flex-start}.erp-page .product-copy h1{font-size:36px}.erp-local{padding:24px 0}}

@@ -32,6 +32,7 @@
       outcome: 'وقت إداري أقل ورواتب أدق ومتابعة أوضح للموظفين.'
     },
     supermarket: {
+      downloadRepo: 'pos-releases',
       tag: 'تجزئة', name: 'نظام إدارة السوبر ماركت',
       headline: 'متجرك يبيع دائماً، وبياناته تصل إليك أينما كنت.',
       desc: 'نقطة بيع محلية سريعة تربط المبيعات والمخزون والعملاء وتزامنها سحابياً.',
@@ -74,7 +75,7 @@
   }).join('') + '</div></section>' : '';
 
   root.innerHTML = '<section class="product-hero">' +
-    '<div class="product-copy"><a class="product-back" href="../../#services">→ جميع الأنظمة</a><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>' + product.tag + ' · تحول رقمي مستمر</span><h1>' + product.headline + '</h1><p>' + product.desc + '</p><div class="hero-actions">' + (product.url ? '<a class="btn" href="' + product.url + '">افتح صفحة النظام</a>' : '<a class="btn" href="https://wa.me/249124376591?text=' + whatsappText + '" target="_blank" rel="noopener">اطلب عرضاً توضيحياً</a>') + '<a class="btn-ghost" href="../../#services">استكشف بقية الأنظمة <span aria-hidden="true">←</span></a></div></div>' +
+    '<div class="product-copy"><a class="product-back" href="../../#services">→ جميع الأنظمة</a><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>' + product.tag + ' · تحول رقمي مستمر</span><h1>' + product.headline + '</h1><p>' + product.desc + '</p><div class="hero-actions">' + (product.downloadRepo ? '<a class="btn" id="downloadPos" data-release-repo="pos-releases" href="https://github.com/MohamedFadlala/pos-releases/releases/latest" aria-describedby="downloadStatus">حمّل أحدث إصدار لـ Windows</a>' : product.url ? '<a class="btn" href="' + product.url + '">افتح صفحة النظام</a>' : '<a class="btn" href="https://wa.me/249124376591?text=' + whatsappText + '" target="_blank" rel="noopener">اطلب عرضاً توضيحياً</a>') + '<a class="btn-ghost" href="../../#services">استكشف بقية الأنظمة <span aria-hidden="true">←</span></a></div>' + (product.downloadRepo ? '<p id="downloadStatus" role="status" aria-live="polite">تنزيل مباشر لأحدث إصدار من برنامج التثبيت.</p><a href="https://github.com/MohamedFadlala/pos-releases/releases/latest" target="_blank" rel="noopener">عرض أحدث إصدار على GitHub</a>' : '') + '</div>' +
     '<aside class="continuity-card"><span class="live-dot"></span><strong>مصمم للاستمرارية</strong><div><b>دون إنترنت</b><span>يواصل العمل ويحفظ العمليات محلياً.</span></div><div><b>بعد عودة الاتصال</b><span>يزامن البيانات تلقائياً مع السحابة.</span></div><div><b>بعد انقطاع الكهرباء</b><span>يستعيد البيانات المحفوظة بأمان عند إعادة التشغيل.</span></div><small>تحتاج الأجهزة والشبكة المحلية إلى مصدر كهرباء أو UPS أثناء الانقطاع.</small></aside>' +
     '</section><section class="product-features"><div class="section-head"><span class="eyebrow"><i class="node-glyph" aria-hidden="true"></i>ما الذي يغيّره النظام؟</span><h2>رقمنة عملية. أثر واضح.</h2></div><div class="feature-list">' + product.features.map(function (feature, index) {
       return '<article><span>0' + (index + 1) + '</span><h3>' + feature + '</h3></article>';
