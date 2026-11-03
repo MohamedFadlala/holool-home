@@ -46,10 +46,10 @@
       if (url.origin !== 'https://github.com' || !url.pathname.startsWith('/MohamedFadlala/erp-releases/releases/download/') || !url.pathname.toLowerCase().endsWith('.exe')) {
         throw new Error('Invalid installer URL');
       }
-      status.textContent = 'Downloading ' + release.tag_name + '. If the download does not start, try again or open the latest release on GitHub.';
+      status.textContent = 'Downloading ' + release.tag_name + '. If the download does not start, try again.';
       window.location.assign(url.href);
     } catch (error) {
-      status.textContent = 'Could not retrieve the installer. Try again, or use “View latest release on GitHub” and choose the .exe file under Assets.';
+      status.textContent = 'Could not retrieve the installer. Please try again shortly.';
     } finally {
       clearTimeout(timeout);
       
