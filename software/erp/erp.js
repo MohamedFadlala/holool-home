@@ -1,6 +1,18 @@
 (function () {
   'use strict';
 
+  var demo = document.getElementById('erpDemo');
+  if (demo) {
+    demo.muted = false;
+    demo.play().catch(function (error) {
+      if (error.name !== 'NotAllowedError') return;
+      demo.muted = true;
+      demo.play().catch(function () {
+        // The native controls remain available if autoplay is disabled entirely.
+      });
+    });
+  }
+
   var header = document.getElementById('siteHeader');
   var nav = document.getElementById('siteNav');
   var toggle = document.getElementById('navToggle');
